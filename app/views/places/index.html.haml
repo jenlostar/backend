@@ -1,0 +1,29 @@
+- provide(:page_back, places_path)
+- provide(:page_title, 'Lugares')
+- provide(:page_icon, 'fa-map-marker')
+- provide(:page_action, 'Listado')
+- provide(:page_action_icon, 'fa-list')
+
+- content_for(:top_action) do
+  =link_to 'Agregar lugar', new_place_path, class: 'button btn btn-success pull-right'
+
+=render 'places_bar'
+
+%table.table.table-striped.table-bordered
+  %tr
+    %th Nombre
+    %th Dirección
+    %th Instrucciones
+    %th Móvil
+    %th Fijo
+    %th
+  - @places.each do |place|
+    %tr
+      %td=link_to place.name, edit_place_path(place)
+      %td= place.address
+      %td= place.instructions
+      %td= place.mobile_phone
+      %td= place.land_line
+      %td
+        =link_to 'Editar', edit_place_path(place), class: 'button btn'
+

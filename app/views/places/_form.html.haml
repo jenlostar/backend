@@ -1,21 +1,18 @@
-- flash.each do |name, msg|
-  = content_tag :div, msg, class: name
-
-= form_for @place do |f|
-  .field
+= form_for @place, html: {role: 'form'} do |f|
+  .form-group
     = f.label :name
-    = f.text_field :name
-  .field
+    = f.text_field :name, class: 'form-control'
+  .form-group
     = f.label :address
-    = f.text_field :address
-  .field
+    = f.text_field :address, class: 'form-control'
+  .form-group
     = f.label :instructions
-    = f.text_field :instructions
-  .field
+    = f.text_field :instructions, class: 'form-control'
+  .form-group
     = f.label :mobile_phone
-    = f.text_field :mobile_phone
-  .field
+    = f.text_field :mobile_phone, class: 'form-control'
+  .form-group
     = f.label :land_line
-    = f.text_field :land_line
+    = f.text_field :land_line, class: 'form-control'
 
-  = f.submit 'Enviar'
+  = f.submit 'Enviar', class: 'button btn btn-default'

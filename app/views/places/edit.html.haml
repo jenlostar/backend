@@ -1,3 +1,10 @@
-%h1 Editar lugar
+- provide(:page_back, places_path)
+- provide(:page_title, 'Lugares')
+- provide(:page_icon, 'fa-map-marker')
+- provide(:page_action, 'Editar')
+- provide(:page_action_icon, 'fa-edit')
+
+- content_for(:top_action) do
+  =link_to 'Agregar lugar', new_place_path, class: 'button btn btn-success pull-right'
 
 =render 'form'

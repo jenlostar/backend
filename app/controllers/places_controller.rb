@@ -1,13 +1,17 @@
 class PlacesController < ApplicationController
 
+  def index
+    @places = Place.all
+  end
+
   def new
-      @place = Place.new
+    @place = Place.new
   end
 
   def create
     @place = Place.new(place_params)
     if @place.save
-      flash[:notice] = t('.the_new_place_has_been_created')
+      flash[:success] = t('.the_new_place_has_been_created')
       redirect_to edit_place_path(@place)
     else
       render action: 'new'
@@ -21,7 +25,7 @@ class PlacesController < ApplicationController
   def update
     @place = Place.find(params[:id])
     if @place.update(place_params)
-      flash[:notice] = t('.the_new_place_has_been_updated')
+      flash[:success] = t('.the_new_place_has_been_updated')
       redirect_to edit_place_path(@place)
     else
       render 'edit'

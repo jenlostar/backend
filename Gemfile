@@ -43,6 +43,9 @@ gem 'spring',        group: :development
 
 gem 'haml', '~> 4.1.0.beta.1'
 
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'font-awesome-rails'
+
 group :test, :development do
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
