@@ -24,6 +24,9 @@
       %td= place.instructions
       %td= place.mobile_phone
       %td= place.land_line
-      %td
-        =link_to 'Editar', edit_place_path(place), class: 'button btn'
+      %td{style: 'white-space: nowrap'}
+        =link_to edit_place_path(place), role: 'button' do
+          %i.fa.fa-fw.fa-edit
+        =link_to edit_place_path(place), role: 'button' do
+          %i.fa.fa-fw.fa-remove
 
