@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
@@ -40,13 +41,18 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'haml', '~> 4.1.0.beta.1'
+
 group :test, :development do
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
   gem 'minitest-focus'
+  gem 'faker'
 end
 
 group :test do
-  gem 'cucumber-rails', '~> 1.4.1'
+  gem 'cucumber-rails', '~> 1.4.1', require: false
   gem 'database_cleaner', '~> 1.3.0'
+  gem 'poltergeist'
+  gem 'factory_girl_rails', '~> 4.0'
 end

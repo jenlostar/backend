@@ -1,0 +1,21 @@
+- flash.each do |name, msg|
+  = content_tag :div, msg, class: name
+
+= form_for @place do |f|
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :instructions
+    = f.text_field :instructions
+  .field
+    = f.label :mobile_phone
+    = f.text_field :mobile_phone
+  .field
+    = f.label :land_line
+    = f.text_field :land_line
+
+  = f.submit 'Enviar'

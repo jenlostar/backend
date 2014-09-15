@@ -1,0 +1,14 @@
+es:
+  places:
+    create:
+      the_new_place_has_been_created: El nuevo lugar ha sido creado
+    update:
+      the_new_place_has_been_updated: El lugar ha sido actualizado
+  helpers:
+    label:
+      place:
+        name: "Nombre"
+        address: "Dirección"
+        instructions: "Instrucciones adicionales"
+        mobile_phone: "Teléfono móvil"
+        land_line: "Teléfono fijo"
