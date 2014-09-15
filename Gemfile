@@ -46,6 +46,8 @@ gem 'haml', '~> 4.1.0.beta.1'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'font-awesome-rails'
 
+gem 'unicorn'
+
 group :test, :development do
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
@@ -58,4 +60,8 @@ group :test do
   gem 'database_cleaner', '~> 1.3.0'
   gem 'poltergeist'
   gem 'factory_girl_rails', '~> 4.0'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
