@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'factory_girl'
+Dir[Rails.root.join("test/factories/*.rb")].each {|f| require f}
+
+100.times do
+  FactoryGirl.create :place
+end
