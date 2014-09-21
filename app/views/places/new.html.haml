@@ -1,7 +1,4 @@
-- provide(:page_back, places_path)
-- provide(:page_title, 'Lugares')
-- provide(:page_icon, 'fa-map-marker')
-- provide(:page_action, 'Nuevo')
-- provide(:page_action_icon, 'fa-file-o')
+- content_for(:top_action) do
+  =link_to 'volver', places_path, class: 'button btn btn-success pull-right'
 
 =render 'form'

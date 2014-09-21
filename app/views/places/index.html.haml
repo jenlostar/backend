@@ -1,13 +1,5 @@
-- provide(:page_back, places_path)
-- provide(:page_title, 'Lugares')
-- provide(:page_icon, 'fa-map-marker')
-- provide(:page_action, 'Listado')
-- provide(:page_action_icon, 'fa-list')
-
 - content_for(:top_action) do
   =link_to 'Agregar lugar', new_place_path, class: 'button btn btn-success pull-right'
-
-=render 'places_bar'
 
 %table.table.table-striped.table-bordered
   %tr
@@ -25,8 +17,11 @@
       %td= place.mobile_phone
       %td= place.land_line
       %td{style: 'white-space: nowrap'}
-        =link_to edit_place_path(place), role: 'button' do
+        =link_to edit_place_path(place) do
           %i.fa.fa-fw.fa-edit
-        =link_to edit_place_path(place), role: 'button' do
+        =link_to place_path(place), data: {confirm: 'Borrar lugar?'}, method: :delete do
           %i.fa.fa-fw.fa-remove
+        =link_to place_schedules_path(place) do
+          %i.fa.fa-fw.fa-calendar
+
 

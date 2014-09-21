@@ -3,8 +3,8 @@
   %head
     %meta{:content => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', :name => 'viewport'}
     %title Backend
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
     #wrapper
@@ -23,7 +23,7 @@
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               %i.fa.fa-user
-              John Smith
+              Jenny Lopez
               %b.caret
             %ul.dropdown-menu
               %li
@@ -56,19 +56,12 @@
               .col-lg-12
                 .pull-righ
                   =yield :top_action
-          - if content_for(:page_title)
             .row
-              .col-lg-12
-                %h2.page-header
-                  =yield(:page_title)
-                %ol.breadcrumb
-                  %li
-                    =link_to yield(:page_back) do
-                      %i.fa{:class => "#{yield(:page_icon)}"}
-                      =yield(:page_title)
-                  %li.active
-                    %i.fa{:class => "#{yield(:page_action_icon)}"}
-                    =yield(:page_action)
+              .col-lg-12= "&nbsp;".html_safe
+          .row
+            .col-lg-12
+              %ol.breadcrumb
+                = render_breadcrumbs :tag => :li, :separator => ""
 
           - flash.each do |name, msg|
             .alert{:class => "alert-#{name}", :role => 'alert'}= msg

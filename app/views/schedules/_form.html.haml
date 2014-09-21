@@ -1,0 +1,18 @@
+= simple_form_for [@schedulable, @schedule], html: {role: 'form'} do |f|
+  .form-group
+    =f.input :day_of_week,
+             collection: Schedule::DAYS,
+             include_blank: false,
+             input_html: {class: 'chosen-select'}
+  .form-group
+    =f.input :start_time,
+             default: Time.parse('8:00'),
+             minute_step: 15,
+             ampm: true
+  .form-group
+    =f.input :end_time,
+             default: Time.parse('8:00'),
+             minute_step: 15,
+             ampm: true
+  .form-actions
+    =f.button :submit, 'Enviar', class: 'btn-primary'

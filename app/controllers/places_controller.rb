@@ -1,10 +1,13 @@
 class PlacesController < ApplicationController
 
+  add_breadcrumb 'Lugares', :places_path
+
   def index
     @places = Place.all
   end
 
   def new
+    add_breadcrumb 'Nuevo'
     @place = Place.new
   end
 
@@ -14,11 +17,13 @@ class PlacesController < ApplicationController
       flash[:success] = t('.the_new_place_has_been_created')
       redirect_to edit_place_path(@place)
     else
+      add_breadcrumb 'Nuevo'
       render action: 'new'
     end
   end
 
   def edit
+    add_breadcrumb 'Editar'
     @place = Place.find(params[:id])
   end
 
@@ -32,7 +37,14 @@ class PlacesController < ApplicationController
     end
   end
 
- def place_params
+  def destroy
+    @place = Place.find(params[:id])
+    @place.destroy
+    redirect_to places_path
+  end
+
+  private
+  def place_params
     params.require(:place).permit(
       :name,
       :address,
