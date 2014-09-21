@@ -13,7 +13,7 @@ When 'I change the place data' do
 
   fill_in 'Nombre', :with => @place.name
   fill_in 'Dirección', :with => @place.address
-  fill_in 'Instrucciones adicionales', :with => @place.instructions
+  fill_in 'Descripción', :with => @place.description
   fill_in 'Teléfono móvil', :with => @place.mobile_phone
   fill_in 'Teléfono fijo', :with => @place.land_line
 
@@ -25,7 +25,7 @@ When 'I add a new place' do
 
   fill_in 'Nombre', :with => @place.name
   fill_in 'Dirección', :with => @place.address
-  fill_in 'Instrucciones adicionales', :with => @place.instructions
+  fill_in 'Descripción', :with => @place.description
   fill_in 'Teléfono móvil', :with => @place.mobile_phone
   fill_in 'Teléfono fijo', :with => @place.land_line
 

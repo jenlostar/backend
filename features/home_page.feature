@@ -6,4 +6,4 @@ Feature: Viewer visits the Home Page
   @ignore
   Scenario: View home page
     Given I am on the home page
-     Then I should see "Bienvenido a nuestro sitio"
+     Then I should see "Adicionar"
