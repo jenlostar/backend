@@ -1,8 +1,5 @@
 class SchedulesController < ApplicationController
 
-  add_breadcrumb 'Lugares', :places_path
-  add_breadcrumb 'Horarios', :place_schedules_path
-
   before_filter do
     @schedulable = Place.find(params[:place_id]) unless params[:place_id].nil?
     @selected_day = params[:day]
@@ -13,22 +10,19 @@ class SchedulesController < ApplicationController
   end
 
   def new
-    add_breadcrumb 'Nuevo'
     @schedule = @schedulable.schedules.build unless @schedulable.nil?
   end
 
   def edit
-    add_breadcrumb 'Editar'
     @schedule = Schedule.find(params[:id])
   end
 
   def create
     @schedule = @schedulable.schedules.build(schedule_params)
     if @schedule.save
-      flash[:success] = t('.created')
-      redirect_to place_schedules_path(@schedulable)
+      flash[:success] = t(:schedule_created)
+      redirect_to selected_place_path(@schedulable)
     else
-      add_breadcrumb 'Nuevo'
       render action: 'new'
     end
   end
@@ -36,10 +30,9 @@ class SchedulesController < ApplicationController
   def update
     @schedule = Schedule.find(params[:id])
     if @schedule.update(schedule_params)
-      flash[:success] = t('.updated')
-      redirect_to place_schedules_path(@schedulable)
+      flash[:success] = t(:schedule_updated)
+      redirect_to selected_place_path(@schedulable)
     else
-      add_breadcrumb 'Editar'
       render 'edit'
     end
   end

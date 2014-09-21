@@ -1,1 +1,10 @@
-=render 'form'
+.panel.panel-default.bootcards-richtext
+  .panel-heading.clearfix
+    %h3.panel-title.pull-left
+      =t(:new)
+    .btn-group.pull-right
+      %a.btn.btn-info{:href => places_path}
+        %i.fa.fa-arrow-left
+        %span=t(:back)
+  .list-group
+    =render 'form'

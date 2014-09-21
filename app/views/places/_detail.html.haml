@@ -1,0 +1,26 @@
+.panel.panel-default.bootcards-richtext
+  .panel-heading.clearfix
+    %h3.panel-title.pull-left= t(:contact)
+    .btn-group.pull-right.visible-xs
+      %a.btn.btn-primary{:href => edit_place_path(@place)}
+        %i.fa.fa-pencil
+        %span=t(:edit)
+    %a.btn.btn-primary.pull-right.hidden-xs{:href => edit_place_path(@place)}
+      %i.fa.fa-pencil
+      %span=t(:edit)
+  .list-group
+    .list-group-item
+      %label= t('simple_form.labels.place.name')
+      %h4.list-group-item-heading= @place.name
+    .list-group-item
+      %label= t('simple_form.labels.place.address')
+      %h4.list-group-item-heading= @place.address
+    .list-group-item
+      %label= t('simple_form.labels.place.description')
+      %h4.list-group-item-heading= @place.description
+    .list-group-item
+      %label= t('simple_form.labels.place.mobile_phone')
+      %h4.list-group-item-heading= @place.mobile_phone
+    .list-group-item
+      %label= t('simple_form.labels.place.land_line')
+      %h4.list-group-item-heading= @place.land_line

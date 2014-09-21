@@ -30,7 +30,6 @@ GEM
     arel (5.0.1.20140414130214)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
-    breadcrumbs_on_rails (2.3.0)
     builder (3.2.2)
     callsite (0.0.11)
     capybara (2.4.1)
@@ -213,7 +212,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.2.0)
-  breadcrumbs_on_rails
   chosen-rails
   coffee-rails (~> 4.0.0)
   cucumber-rails (~> 1.4.1)

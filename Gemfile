@@ -44,7 +44,6 @@ gem 'spring',        group: :development
 gem 'haml', '~> 4.1.0.beta.1'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'font-awesome-rails'
-gem 'breadcrumbs_on_rails'
 gem 'simple_form'
 gem 'chosen-rails'
 

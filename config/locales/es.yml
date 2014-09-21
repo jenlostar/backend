@@ -1,25 +1,36 @@
 es:
-  places:
-    create:
-      created: "El nuevo lugar ha sido creado"
-    update:
-      updated: "El lugar ha sido actualizado"
-  schedules:
-    create:
-      created: "El nuevo horario ha sido creado"
-    update:
-      updated: "El horario ha sido actualizado"
+  schedule: Horario
+  new_schedule: Nuevo Horario
+  edit_schedule: Editar Horario
+  delete_schedule_confirm: Borrar horario?
+  place: Lugar
+  delete_place_confirm: Borrar lugar?
+  new: Nuevo
+  places: Lugares
+  contact: Contacto
+  back: Volver
+  name: Nombre
+  address: Dirección
+  search_place: Buscar salon de belleza
+  add: Adicionar
+  edit: Editar
+  services: Servicios
+  place_created: El nuevo lugar ha sido creado
+  place_updated: El lugar ha sido actualizado
+  schedule_created: El nuevo horario ha sido creado
+  schedule_updated: El horario ha sido actualizado
+
 
   simple_form:
     labels:
       place:
-        name: "Nombre"
-        address: "Dirección"
-        instructions: "Instrucciones adicionales"
-        mobile_phone: "Teléfono móvil"
-        land_line: "Teléfono fijo"
+        name: Nombre
+        address: Dirección
+        description: Descripción
+        mobile_phone: Teléfono móvil
+        land_line: Teléfono fijo
       schedule:
-        day_of_week: "Día de la semana"
-        start_time: "Hora inicio"
-        end_time: "Hora finalización"
+        day_of_week: Día de la semana
+        start_time: Hora inicio
+        end_time: Hora finalización
 

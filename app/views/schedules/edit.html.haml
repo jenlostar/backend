@@ -1,1 +1,14 @@
-=render 'form'
+.panel.panel-default.bootcards-richtext
+  .panel-heading.clearfix
+    %h3.panel-title.pull-left
+      =link_to "#{@schedulable.name}", selected_place_path(@schedulable)
+      =" - #{t(:edit_schedule)}"
+    .btn-group.pull-right
+      =link_to selected_place_path(@schedulable), class: 'btn btn-info' do
+        %i.fa.fa-arrow-left
+        %span=t(:back)
+      =link_to place_path(@schedule), class: 'btn btn-danger', data: {confirm: t(:delete_schedule_confirm)}, method: :delete do
+        %i.fa.fa-trash
+        %span=t(:delete)
+  .list-group
+    =render 'form'

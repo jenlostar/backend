@@ -1,1 +1,11 @@
-=render 'form'
+.panel.panel-default.bootcards-richtext
+  .panel-heading.clearfix
+    %h3.panel-title.pull-left
+      =link_to "#{@schedulable.name}", "#{places_path}?selected=#{@schedulable.id}"
+      =" - #{t(:new_schedule)}"
+    .btn-group.pull-right
+      =link_to selected_place_path(@schedulable), class: 'btn btn-info' do
+        %i.fa.fa-arrow-left
+        %span=t(:back)
+  .list-group
+    =render 'form'

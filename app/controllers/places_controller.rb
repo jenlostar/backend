@@ -1,36 +1,33 @@
 class PlacesController < ApplicationController
 
-  add_breadcrumb 'Lugares', :places_path
-
   def index
-    @places = Place.all
+    @places = Place.limit(10)
+    @place = Place.find(params[:id]) unless params[:id].blank?
+    @schedules = @place.schedules.for_index unless @place.nil?
   end
 
   def new
-    add_breadcrumb 'Nuevo'
     @place = Place.new
   end
 
   def create
     @place = Place.new(place_params)
     if @place.save
-      flash[:success] = t('.created')
+      flash[:success] = t(:place_created)
       redirect_to edit_place_path(@place)
     else
-      add_breadcrumb 'Nuevo'
       render action: 'new'
     end
   end
 
   def edit
-    add_breadcrumb 'Editar'
     @place = Place.find(params[:id])
   end
 
   def update
     @place = Place.find(params[:id])
     if @place.update(place_params)
-      flash[:success] = t('.updated')
+      flash[:success] = t(:place_updated)
       redirect_to edit_place_path(@place)
     else
       render 'edit'
