@@ -3,6 +3,7 @@
     =f.input :day_of_week,
              collection: Schedule::DAYS,
              include_blank: false,
+             selected: @selected_day,
              input_html: {class: 'chosen-select'}
   .form-group
     =f.input :start_time,
