@@ -1,7 +1,7 @@
 class SchedulesController < ApplicationController
 
   add_breadcrumb 'Lugares', :places_path
-  add_breadcrumb 'Horarios'
+  add_breadcrumb 'Horarios', :place_schedules_path
 
   before_filter do
     @schedulable = Place.find(params[:place_id]) unless params[:place_id].nil?

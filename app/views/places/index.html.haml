@@ -1,6 +1,3 @@
-- content_for(:top_action) do
-  =link_to 'Agregar lugar', new_place_path, class: 'button btn btn-success pull-right'
-
 %table.table.table-striped.table-bordered
   %tr
     %th Nombre
@@ -8,7 +5,7 @@
     %th Instrucciones
     %th Móvil
     %th Fijo
-    %th
+    %th=link_to 'Nuevo', new_place_path, class: 'button btn btn-primary btn-xs'
   - @places.each do |place|
     %tr
       %td=link_to place.name, edit_place_path(place)

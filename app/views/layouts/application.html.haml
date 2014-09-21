@@ -51,13 +51,6 @@
                 Lugares
       #page-wrapper
         .container-fluid
-          - if content_for?(:top_action)
-            .row
-              .col-lg-12
-                .pull-righ
-                  =yield :top_action
-            .row
-              .col-lg-12= "&nbsp;".html_safe
           .row
             .col-lg-12
               %ol.breadcrumb

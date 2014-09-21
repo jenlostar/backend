@@ -1,12 +1,12 @@
-- content_for(:top_action) do
-  =link_to 'Nuevo horario', new_place_schedule_path(@schedulable), class: 'button btn btn-success pull-right'
-
 - Schedule::DAYS.keys.each_slice(2) do |days|
   .row
   - days.each do |day|
     .col-md-6
       %ul.list-group
-        %li.list-group-item.disabled=day
+        %li.list-group-item.disabled
+          =day
+          =link_to new_place_schedule_path(@schedulable) do
+            %i.fa.fa-fw.fa-plus
         - !@schedules[day].nil? and @schedules[day].each do |hour|
           %li.list-group-item
             =link_to time_range(hour), edit_place_schedule_path(@schedulable, :id => hour[:id])
