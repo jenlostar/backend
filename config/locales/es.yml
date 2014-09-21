@@ -1,14 +1,25 @@
 es:
   places:
     create:
-      the_new_place_has_been_created: El nuevo lugar ha sido creado
+      created: "El nuevo lugar ha sido creado"
     update:
-      the_new_place_has_been_updated: El lugar ha sido actualizado
-  helpers:
-    label:
+      updated: "El lugar ha sido actualizado"
+  schedules:
+    create:
+      created: "El nuevo horario ha sido creado"
+    update:
+      updated: "El horario ha sido actualizado"
+
+  simple_form:
+    labels:
       place:
         name: "Nombre"
         address: "Dirección"
         instructions: "Instrucciones adicionales"
         mobile_phone: "Teléfono móvil"
         land_line: "Teléfono fijo"
+      schedule:
+        day_of_week: "Día de la semana"
+        start_time: "Hora inicio"
+        end_time: "Hora finalización"
+
