@@ -1,18 +1,8 @@
-= form_for @place, html: {role: 'form'} do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
-  .form-group
-    = f.label :address
-    = f.text_field :address, class: 'form-control'
-  .form-group
-    = f.label :instructions
-    = f.text_field :instructions, class: 'form-control'
-  .form-group
-    = f.label :mobile_phone
-    = f.text_field :mobile_phone, class: 'form-control'
-  .form-group
-    = f.label :land_line
-    = f.text_field :land_line, class: 'form-control'
-
-  = f.submit 'Enviar', class: 'button btn btn-default'
+= simple_form_for @place do |f|
+  .form-group= f.input :name, input_html: { class: 'form-control' }
+  .form-group= f.input :address, input_html: { class: 'form-control' }
+  .form-group= f.input :instructions, input_html: { class: 'form-control' }
+  .form-group= f.input :mobile_phone, input_html: { class: 'form-control' }
+  .form-group= f.input :land_line, input_html: { class: 'form-control' }
+  .form-actions
+    =f.button :submit, 'Enviar', class: 'btn-primary'

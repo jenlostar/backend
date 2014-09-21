@@ -1,4 +1,4 @@
-= simple_form_for [@schedulable, @schedule], html: {role: 'form'} do |f|
+= simple_form_for [@schedulable, @schedule] do |f|
   .form-group
     =f.input :day_of_week,
              collection: Schedule::DAYS,

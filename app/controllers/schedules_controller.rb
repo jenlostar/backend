@@ -21,10 +21,21 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
   end
 
+  def create
+    @schedule = @schedulable.schedules.build(schedule_params)
+    if @schedule.save
+      flash[:success] = t('.created')
+      redirect_to place_schedules_path(@schedulable)
+    else
+      add_breadcrumb 'Nuevo'
+      render action: 'new'
+    end
+  end
+
   def update
     @schedule = Schedule.find(params[:id])
     if @schedule.update(schedule_params)
-      flash[:success] = t('.the_new_place_has_been_updated')
+      flash[:success] = t('.updated')
       redirect_to place_schedules_path(@schedulable)
     else
       add_breadcrumb 'Editar'
@@ -36,17 +47,6 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
     @schedule.destroy
     redirect_to place_schedules_path(@schedulable)
-  end
-
-  def create
-    @schedule = @schedulable.schedules.build(schedule_params)
-    if @schedule.save
-      flash[:success] = t('.the_new_place_has_been_created')
-      redirect_to place_schedules_path(@schedulable)
-    else
-      add_breadcrumb 'Nuevo'
-      render action: 'new'
-    end
   end
 
   private
