@@ -58,10 +58,10 @@ group :test, :development do
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
   gem 'minitest-focus'
-  gem 'faker'
 end
 
 gem 'factory_girl'
+gem 'faker'
 
 group :test do
   gem 'cucumber-rails', '~> 1.4.1', require: false
