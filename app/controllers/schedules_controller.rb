@@ -5,7 +5,7 @@ class SchedulesController < ApplicationController
 
   before_filter do
     @schedulable = Place.find(params[:place_id]) unless params[:place_id].nil?
-    @selected_day = params[:day] || 1
+    @selected_day = params[:day]
   end
 
   def index
