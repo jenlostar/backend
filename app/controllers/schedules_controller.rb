@@ -40,7 +40,7 @@ class SchedulesController < ApplicationController
   def destroy
     @schedule = Schedule.find(params[:id])
     @schedule.destroy
-    redirect_to place_schedules_path(@schedulable)
+    redirect_to selected_place_path(@schedulable)
   end
 
   private
