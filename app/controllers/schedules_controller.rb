@@ -1,16 +1,16 @@
 class SchedulesController < ApplicationController
 
   before_filter do
-    @schedulable = Place.find(params[:place_id]) unless params[:place_id].nil?
+    @place = Place.find(params[:place_id]) unless params[:place_id].nil?
     @selected_day = params[:day]
   end
 
   def index
-    @schedules = @schedulable.schedules.for_index
+    @schedules = @place.schedules.for_index
   end
 
   def new
-    @schedule = @schedulable.schedules.build unless @schedulable.nil?
+    @schedule = @place.schedules.build unless @place.nil?
   end
 
   def edit
@@ -18,10 +18,10 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = @schedulable.schedules.build(schedule_params)
+    @schedule = @place.schedules.build(schedule_params)
     if @schedule.save
       flash[:success] = t(:schedule_created)
-      redirect_to selected_place_path(@schedulable)
+      redirect_to selected_place_path(@place)
     else
       render action: 'new'
     end
@@ -31,7 +31,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
     if @schedule.update(schedule_params)
       flash[:success] = t(:schedule_updated)
-      redirect_to selected_place_path(@schedulable)
+      redirect_to selected_place_path(@place)
     else
       render 'edit'
     end
@@ -40,7 +40,7 @@ class SchedulesController < ApplicationController
   def destroy
     @schedule = Schedule.find(params[:id])
     @schedule.destroy
-    redirect_to selected_place_path(@schedulable)
+    redirect_to selected_place_path(@place)
   end
 
   private

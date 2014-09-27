@@ -14,5 +14,9 @@
     - @places.each do |place|
       %a.list-group-item{:href => selected_place_path(place), class: "#{' active' if @place.try(:id) === place.id}"}
         %i.fa.fa-3x.fa-building-o.pull-left
-        %h4.list-group-item-heading= place.name
-        %p.list-group-item-text= place.address
+        %h5.list-group-item-heading
+          = "#{place.name}, #{place.address}"
+        %p.list-group-item-text
+          = place.description
+          = "#{place.land_line} - #{place.mobile_phone}"
+

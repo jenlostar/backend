@@ -5,12 +5,12 @@
       %ul.list-group
         %li.list-group-item.disabled
           =day
-          =link_to "#{new_place_schedule_path(@schedulable)}?day=#{Schedule::DAYS[day]}" do
+          =link_to "#{new_place_schedule_path(@place)}?day=#{Schedule::DAYS[day]}" do
             %i.fa.fa-fw.fa-plus
         - !@schedules[day].nil? and @schedules[day].each do |hour|
           %li.list-group-item
-            =link_to time_range(hour), edit_place_schedule_path(@schedulable, :id => hour[:id])
-            =link_to edit_place_schedule_path(@schedulable, :id => hour[:id]) do
+            =link_to time_range(hour), edit_place_schedule_path(@place, :id => hour[:id])
+            =link_to edit_place_schedule_path(@place, :id => hour[:id]) do
               %i.fa.fa-fw.fa-edit
-            =link_to place_schedule_path(@schedulable, :id => hour[:id]), data: {confirm: 'Borrar horario?'}, method: :delete do
+            =link_to place_schedule_path(@place, :id => hour[:id]), data: {confirm: 'Borrar horario?'}, method: :delete do
               %i.fa.fa-fw.fa-remove

@@ -41,7 +41,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 # UI
-gem 'haml', '~> 4.1.0.beta.1'
+gem 'haml-rails'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'font-awesome-rails'
 gem 'simple_form'

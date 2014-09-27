@@ -31,7 +31,6 @@ module Backend
         g.helper false
         g.assets false
         g.view_specs false
-        g.template_engine :haml
     end
   end
 end

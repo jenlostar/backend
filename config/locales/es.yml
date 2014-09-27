@@ -19,7 +19,11 @@ es:
   place_updated: El lugar ha sido actualizado
   schedule_created: El nuevo horario ha sido creado
   schedule_updated: El horario ha sido actualizado
-
+  new_service: Nuevo servicio
+  edit_service: Editar servicio
+  service_updated: Servicio actualizado
+  service_created: Servicio creado
+  delete_service_confirm: Borrar servicio?
 
   simple_form:
     labels:
@@ -33,4 +37,9 @@ es:
         day_of_week: Día de la semana
         start_time: Hora inicio
         end_time: Hora finalización
+      service:
+        name: Nombre
+        minimum_amount: Monto mínimo
+        maximum_amount: Monto máximo
+        estimated_duration: Duración estimada (minutos)
 
