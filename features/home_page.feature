@@ -3,7 +3,6 @@ Feature: Viewer visits the Home Page
   As a viewer
   I want to see the home page of my app
 
-  @ignore
   Scenario: View home page
     Given I am on the home page
-     Then I should see "Adicionar"
+     Then I should see "Necesita iniciar sesión o registrarse para continuar."
