@@ -24,6 +24,7 @@ es:
   service_updated: Servicio actualizado
   service_created: Servicio creado
   delete_service_confirm: Borrar servicio?
+  minutes: Minutos
 
   simple_form:
     labels:
