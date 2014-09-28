@@ -1,5 +1,13 @@
 class Schedule < ActiveRecord::Base
-  DAYS = {:LUNES => 1, :MARTES => 2, :MIERCOLES => 3, :JUEVES => 4, :VIERNES => 5, :SABADO => 6, :DOMINGO => 7}
+  DAYS = {
+    :MONDAY    => 1,
+    :TUESDAY   => 2,
+    :WEDNESDAY => 3,
+    :THURSDAY  => 4,
+    :FRIDAY    => 5,
+    :SATURDAY  => 6,
+    :SUNDAY    => 7
+  }
 
   belongs_to :schedulable, polymorphic: true
 
@@ -14,7 +22,7 @@ class Schedule < ActiveRecord::Base
       nextItem[:day] = Schedule.day_name(hour).to_sym
       nextItem[:start] = hour.start_time
       nextItem[:end] = hour.end_time
-      next nextItem
+      nextItem
     end.group_by {|m| m[:day] }
   end
 end

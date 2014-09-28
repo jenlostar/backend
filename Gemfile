@@ -46,7 +46,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'font-awesome-rails'
 gem 'simple_form'
 gem 'chosen-rails'
-
+gem 'dotiw', github: 'radar/dotiw', branch: 'upgrade'
 gem 'unicorn'
 
 group :development do

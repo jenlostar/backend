@@ -24,8 +24,21 @@ es:
   service_updated: Servicio actualizado
   service_created: Servicio creado
   delete_service_confirm: Borrar servicio?
-  minutes: Minutos
-
+  minutes: minutos
+  hours: horas
+  and: y
+  ladies: Damas
+  gentlemen: Caballeros
+  girls: Niñas
+  boys: Niños
+  all: Todos
+  monday: Lunes
+  tuesday: Martes
+  wednesday: Miércoles
+  thursday: Jueves
+  friday: Viernes
+  saturday: Sábado
+  sunday: Domingo
   simple_form:
     labels:
       place:
@@ -43,5 +56,13 @@ es:
         kind: Clase de servicio
         minimum_amount: Monto mínimo
         maximum_amount: Monto máximo
-        estimated_duration: Duración estimada (minutos)
+        duration: Duración estimada (minutos)
 
+  datetime:
+    distance_in_words:
+      x_minutes:
+        one: '1 minuto'
+        other: '%{count} minutos'
+      about_x_hours:
+        one: '1 hora'
+        other: '%{count} horas'

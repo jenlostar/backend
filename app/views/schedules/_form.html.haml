@@ -1,21 +1,22 @@
-= simple_form_for [@place, @schedule] do |f|
+=simple_form_for [@place, @schedule] do |f|
   .list-group-item
-    %label= t('simple_form.labels.schedule.day_of_week')
+    %label=t('simple_form.labels.schedule.day_of_week')
     .list-group-item-heading
       =f.input_field :day_of_week,
                      collection: Schedule::DAYS,
                      include_blank: false,
                      selected: @selected_day || @schedule.day_of_week,
+                     label_method: lambda { |el| t(el.first.downcase) },
                      input_html: {class: 'chosen-select'}
   .list-group-item
-    %label= t('simple_form.labels.schedule.start_time')
+    %label=t('simple_form.labels.schedule.start_time')
     .list-group-item-heading
       =f.input_field :start_time,
                      default: Time.parse('8:00'),
                      minute_step: 15,
                      ampm: true
   .list-group-item
-    %label= t('simple_form.labels.schedule.end_time')
+    %label=t('simple_form.labels.schedule.end_time')
     .list-group-item-heading
       =f.input_field :end_time,
                      default: Time.parse('8:00'),

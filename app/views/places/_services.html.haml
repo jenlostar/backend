@@ -1,11 +1,14 @@
 .panel.panel-default.bootcards-richtext
   .panel-heading.clearfix
-    %h3.panel-title.pull-left= t(:services)
+    %h3.panel-title.pull-left=t(:services)
     .btn-group.pull-right
       =link_to new_place_service_path(@place), class: 'btn btn-primary' do
         %i.fa.fa-plus
         %span=t(:add)
-  .list-group
-    - @services.try(:each) do |service|
-      %li.list-group-item
-        =link_to service_detail(service), edit_place_service_path(@place, service)
+  - Service.kinds.keys.each do |kind|
+    .list-group
+      %li.list-group-item=t(kind.to_s.downcase)
+      - !@services[kind].nil? and @services[kind].each do |service|
+        %li.list-group-item
+          =link_to service_detail(service), edit_place_service_path(@place, service)
+

@@ -45,7 +45,7 @@ class ServicesController < ApplicationController
       :kind,
       :minimum_amount,
       :maximum_amount,
-      :estimated_duration)
+      :duration)
   end
 
 end

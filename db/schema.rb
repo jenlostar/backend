@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927233258) do
+ActiveRecord::Schema.define(version: 20140928022826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,14 +37,14 @@ ActiveRecord::Schema.define(version: 20140927233258) do
   end
 
   create_table "services", force: true do |t|
-    t.string   "name",               limit: 50
+    t.string   "name",           limit: 50
     t.integer  "minimum_amount"
     t.integer  "maximum_amount"
-    t.integer  "estimated_duration"
     t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "kind",                          default: 0
+    t.integer  "kind",                      default: 0
+    t.time     "duration"
   end
 
 end

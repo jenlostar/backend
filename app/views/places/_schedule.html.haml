@@ -1,13 +1,13 @@
 .panel.panel-default.bootcards-richtext
   .panel-heading.clearfix
-    %h3.panel-title.pull-left= t(:schedule)
+    %h3.panel-title.pull-left=t(:schedule)
     .btn-group.pull-right
       =link_to new_place_schedule_path(@place), class: 'btn btn-primary' do
         %i.fa.fa-plus
         %span=t(:add)
   - Schedule::DAYS.keys.each do |day|
     .list-group
-      %li.list-group-item=day
+      %li.list-group-item=t(day.downcase)
       - !@schedules[day].nil? and @schedules[day].each do |hour|
         %li.list-group-item
           =link_to time_range(hour), edit_place_schedule_path(@place, :id => hour[:id])

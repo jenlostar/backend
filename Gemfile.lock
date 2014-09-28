@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/radar/dotiw.git
+  revision: 230094510c61f1fc64a7766601aae6d98cc5fee9
+  branch: upgrade
+  specs:
+    dotiw (1.1.1)
+      actionpack (>= 3.0, <= 5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -221,6 +229,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   cucumber-rails (~> 1.4.1)
   database_cleaner (~> 1.3.0)
+  dotiw!
   factory_girl
   factory_girl_rails (~> 4.0)
   faker

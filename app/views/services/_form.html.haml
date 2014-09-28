@@ -1,26 +1,30 @@
-= simple_form_for [@place, @service] do |f|
+=simple_form_for [@place, @service] do |f|
   .list-group-item
-    %label= t('simple_form.labels.service.name')
+    %label=t('simple_form.labels.service.name')
     .list-group-item-heading
       =f.input_field :name, class: 'form-control'
   .list-group-item
-    %label= t('simple_form.labels.service.kind')
+    %label=t('simple_form.labels.service.kind')
     .list-group-item-heading
       =f.input_field :kind, collection: Service.kinds.keys.to_a,
                      as: :select,
+                     label_method: lambda { |el| t(el.downcase) },
                      class: 'form-control'
   .list-group-item
-    %label= t('simple_form.labels.service.minimum_amount')
+    %label=t('simple_form.labels.service.minimum_amount')
     .list-group-item-heading
       =f.input_field :minimum_amount, class: 'form-control'
   .list-group-item
-    %label= t('simple_form.labels.service.maximum_amount')
+    %label=t('simple_form.labels.service.maximum_amount')
     .list-group-item-heading
       =f.input_field :maximum_amount, class: 'form-control'
   .list-group-item
-    %label= t('simple_form.labels.service.estimated_duration')
+    %label=t('simple_form.labels.service.duration')
     .list-group-item-heading
-      =f.input_field :estimated_duration, class: 'form-control'
+      =f.input_field :duration, default: Time.parse('00:00'),
+                     minute_step: 5,
+                     ampm: false,
+                     class: 'form-control'
   .list-group-item
     .list-group-item-heading
       =f.button :submit, 'Enviar', class: 'btn-primary'
