@@ -10,7 +10,8 @@ module ApplicationHelper
 
   def service_time_in_seconds(service)
     dt = service.duration
-    (dt.hour * 3600 + dt.min * 60)
+    return 0 if dt.nil?
+    (dt.hour * 3600 + dt.min * 60) rescue 0
   end
 
   def service_time_in_words(service)
