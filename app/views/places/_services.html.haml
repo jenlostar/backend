@@ -8,5 +8,4 @@
   .list-group
     - @services.try(:each) do |service|
       %li.list-group-item
-        =link_to edit_place_service_path(@place, service) do
-          =service.name
+        =link_to service_detail(service), edit_place_service_path(@place, service)

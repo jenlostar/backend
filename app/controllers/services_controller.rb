@@ -42,6 +42,7 @@ class ServicesController < ApplicationController
   def service_params
     params.require(:service).permit(
       :name,
+      :kind,
       :minimum_amount,
       :maximum_amount,
       :estimated_duration)

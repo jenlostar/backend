@@ -7,7 +7,7 @@
       =link_to selected_place_path(@place), class: 'btn btn-info' do
         %i.fa.fa-arrow-left
         %span=t(:back)
-      =link_to place_schedule_path(@place, @service), class: 'btn btn-danger', data: {confirm: t(:delete_service_confirm)}, method: :delete do
+      =link_to place_service_path(@place, @service), class: 'btn btn-danger', data: {confirm: t(:delete_service_confirm)}, method: :delete do
         %i.fa.fa-trash
         %span=t(:delete)
   .list-group

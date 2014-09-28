@@ -39,6 +39,7 @@ es:
         end_time: Hora finalización
       service:
         name: Nombre
+        kind: Clase de servicio
         minimum_amount: Monto mínimo
         maximum_amount: Monto máximo
         estimated_duration: Duración estimada (minutos)

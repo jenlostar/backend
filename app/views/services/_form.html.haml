@@ -4,6 +4,12 @@
     .list-group-item-heading
       =f.input_field :name, class: 'form-control'
   .list-group-item
+    %label= t('simple_form.labels.service.kind')
+    .list-group-item-heading
+      =f.input_field :kind, collection: Service.kinds.keys.to_a,
+                     as: :select,
+                     class: 'form-control'
+  .list-group-item
     %label= t('simple_form.labels.service.minimum_amount')
     .list-group-item-heading
       =f.input_field :minimum_amount, class: 'form-control'
