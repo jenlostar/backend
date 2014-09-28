@@ -4,12 +4,16 @@ module ApplicationHelper
     "#{hour[:start].strftime('%I:%M %p')} - #{hour[:end].strftime('%I:%M %p')}"
   end
 
+  def COP(amount)
+    number_to_currency(amount, precision: 0)
+  end
+
   def service_detail(service)
     args = [
       service.name,
       service.kind,
-      number_to_currency(service.minimum_amount, precision: 0),
-      number_to_currency(service.maximum_amount, precision: 0),
+      COP(service.minimum_amount),
+      COP(service.maximum_amount),
       service.estimated_duration,
       t(:minutes)
     ]
