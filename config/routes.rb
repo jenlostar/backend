@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
+  devise_for :admins
   resources :places do
     resources :schedules
     resources :services
   end
 
   get '/places/:id/selected' => 'places#index', as: :selected_place
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

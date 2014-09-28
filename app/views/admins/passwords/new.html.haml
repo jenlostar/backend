@@ -1,0 +1,13 @@
+.panel.panel-default.bootcards-richtext
+  .panel-heading.clearfix
+    %h3.panel-title.pull-left
+      =t(:forgot_your_password)
+  .list-group
+    =simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post, autocomplete: 'off' }) do |f|
+      .list-group-item
+        =f.label :name, t('simple_form.labels.admins.email')
+        .list-group-item-heading=f.input_field :email, required: true, autofocus: true, class: 'form-control'
+      .list-group-item
+        .list-group-item-heading
+          =f.button :submit, t(:send), class: 'btn-primary'
+          = render "admins/shared/links"

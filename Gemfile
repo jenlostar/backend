@@ -8,6 +8,9 @@ gem 'rails', '4.1.5'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+# devise
+gem 'devise'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -47,6 +50,7 @@ gem 'font-awesome-rails'
 gem 'simple_form'
 gem 'chosen-rails'
 gem 'dotiw', github: 'radar/dotiw', branch: 'upgrade'
+
 gem 'unicorn'
 
 group :development do

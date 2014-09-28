@@ -33,4 +33,8 @@ module ApplicationHelper
   def selected_index_item_class(place)
     ' active' if @place.try(:id) === place.id
   end
+
+  def alert_class(name)
+    name.gsub('alert', 'danger').gsub('notice', 'success')
+  end
 end

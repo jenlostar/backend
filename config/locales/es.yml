@@ -39,6 +39,10 @@ es:
   friday: Viernes
   saturday: Sábado
   sunday: Domingo
+  sign_in: Entrar
+  sign_out: Salir
+  forgot_your_password: Olvidó su contraseña?
+  send: Enviar
   simple_form:
     labels:
       place:
