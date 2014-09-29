@@ -7,8 +7,19 @@ Rails.application.routes.draw do
   devise_for :admins
 
   resources :places, :concerns => :paginatable do
-    resources :schedules, :services
+
+    with_options except: [:index, :show] do |list_except|
+      list_except.resources :schedules
+      list_except.resources :services
+    end
+
     get 'selected' => 'places#index', as: :selected, on: :member
+  end
+
+  namespace :api, :defaults => {:format => :json} do
+    namespace :v1 do
+      resources :places, only: [:index, :show]
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

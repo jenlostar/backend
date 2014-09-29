@@ -8,4 +8,10 @@ require 'minitest/pride'
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
+  fixtures :all
+  include FactoryGirl::Syntax::Methods
+
+  def json(body)
+    JSON.parse(body, symbolize_names: true)
+  end
 end

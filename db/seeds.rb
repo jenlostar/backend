@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 require 'factory_girl'
-Dir[Rails.root.join("test/factories/*.rb")].each {|f| require f}
+require Rails.root.join('test/factories.rb')
 
 100.times do
   FactoryGirl.create :place
