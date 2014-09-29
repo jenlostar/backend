@@ -49,8 +49,14 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'font-awesome-rails'
 gem 'simple_form'
 gem 'chosen-rails'
+
+# Time in words
 gem 'dotiw', github: 'radar/dotiw', branch: 'upgrade'
 
+# Paginator
+gem 'kaminari-bootstrap'
+
+# Web server
 gem 'unicorn'
 
 group :development do

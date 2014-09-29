@@ -282,7 +282,7 @@ a.list-group-item.bootcards-list-subheading.collapsed:before {
   padding-left: 32px;
 }
 
-.bootcards-list form i.fa-search, .bootcards-list .search-form i.fa-search {
+.bootcards-list form i.fa-search.placeholder, .bootcards-list .search-form i.fa-search.placeholder {
   position: absolute;
   left: 12px;
   top: 10px;

@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
 
-  devise_for :admins
-  resources :places do
-    resources :schedules
-    resources :services
+  concern :paginatable do
+    get '(page/:page)', :action => :index, :on => :collection, :as => ''
   end
 
-  get '/places/:id/selected' => 'places#index', as: :selected_place
+  devise_for :admins
 
+  resources :places, :concerns => :paginatable do
+    resources :schedules, :services
+    get 'selected' => 'places#index', as: :selected, on: :member
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

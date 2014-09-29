@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
 
   def index
-    @places = Place.limit(10)
+    @places = Place.page params[:page]
     @place = Place.find(params[:id]) unless params[:id].blank?
     @schedules = @place.schedules.for_index unless @place.nil?
     @services = @place.services.for_index unless @place.nil?

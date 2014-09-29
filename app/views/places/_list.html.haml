@@ -2,11 +2,15 @@
   .panel-body
     .search-form
       .row
-        .col-xs-8
+        .col-xs-6
           .form-group
             %input.form-control{:placeholder => t(:search_place), :type => "text"}
+            %i.fa.fa-search.placeholder
+        .col-xs-3
+          %a.btn.btn-info.btn-block{:href => new_place_path}
             %i.fa.fa-search
-        .col-xs-4
+            %span=t(:search)
+        .col-xs-3
           %a.btn.btn-primary.btn-block{:href => new_place_path}
             %i.fa.fa-plus
             %span=t(:add)
@@ -19,4 +23,7 @@
         %p.list-group-item-text
           =place.description
           ="#{place.land_line} - #{place.mobile_phone}"
+
+
+=paginate @places
 

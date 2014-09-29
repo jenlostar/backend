@@ -22,12 +22,11 @@ module ApplicationHelper
   def service_detail(service)
     args = [
       service.name,
-      service.kind,
       COP(service.minimum_amount),
       COP(service.maximum_amount),
       service_time_in_words(service)
     ]
-    "%s - %s, %s / %s, %s" % args
+    "%s, %s / %s, %s" % args
   end
 
   def selected_index_item_class(place)
