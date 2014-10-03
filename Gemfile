@@ -68,6 +68,7 @@ group :test, :development do
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
   gem 'minitest-focus'
+  gem 'minitest-reporters'
 end
 
 gem 'factory_girl'

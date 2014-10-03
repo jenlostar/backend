@@ -5,7 +5,7 @@ class ListingPlacesTest < ActionDispatch::IntegrationTest
 
   test 'returns list of all places' do
     create_list(:place, 11)
-    get '/api/v1/places'
+    get api_v1_places_path
     assert_equal 200, response.status
     refute_empty response.body
 
@@ -15,7 +15,7 @@ class ListingPlacesTest < ActionDispatch::IntegrationTest
 
   test 'return place by id' do
     place = create(:place, name: 'Ecosalon')
-    get "/api/v1/places/#{place.id}"
+    get api_v1_place_path(place)
     assert_equal 200, response.status
 
     place_response = json(response.body)

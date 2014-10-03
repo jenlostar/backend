@@ -5,6 +5,9 @@ require 'minitest/rails'
 require 'minitest/rails/capybara'
 require 'minitest/focus'
 require 'minitest/pride'
+require 'minitest/reporters'
+
+Minitest::Reporters.use! [Minitest::Reporters::SpecReporter.new(:color => true)]
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
