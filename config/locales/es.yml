@@ -71,3 +71,16 @@ es:
       about_x_hours:
         one: '1 hora'
         other: '%{count} horas'
+
+  activerecord:
+    models:
+      booking: Reserva
+    attributes:
+      booking:
+        booked_services: Servicios
+    errors:
+      models:
+        booking:
+          attributes:
+            booked_services:
+              blank: Debe seleccionar uno o mas servicios

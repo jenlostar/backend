@@ -27,7 +27,7 @@ module Backend
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :es
     config.generators do |g|
-        g.test_framework :minitest, :spec => true, :fixture => false
+        g.test_framework :minitest, :spec => false, :fixture => false
         g.helper false
         g.assets false
         g.view_specs false
