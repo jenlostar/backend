@@ -1,9 +1,11 @@
 require 'test_helper'
 
 class ListingPlacesTest < ActionDispatch::IntegrationTest
-  setup {host! 'example.com'}
+  def setup
+    host! 'example.com'
+  end
 
-  test 'returns list of all places' do
+  def test_returns_list_of_all_places
     create_list(:place, 11)
     get api_v1_places_path
     assert_equal 200, response.status
@@ -13,7 +15,7 @@ class ListingPlacesTest < ActionDispatch::IntegrationTest
     assert_equal 10, places_response.length
   end
 
-  test 'return place by id' do
+  def test_return_place_by_id
     place = create(:place, name: 'Ecosalon')
     get api_v1_place_path(place)
     assert_equal 200, response.status
