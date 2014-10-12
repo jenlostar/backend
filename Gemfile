@@ -62,6 +62,8 @@ gem 'unicorn'
 group :development do
   gem 'meta_request'
   gem 'quiet_assets'
+  gem 'bullet'
+  gem 'pry'
 end
 
 group :test, :development do
