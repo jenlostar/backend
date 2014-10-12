@@ -1,5 +1,4 @@
 class SchedulesController < ApplicationController
-
   before_action do
     @place = Place.find(params[:place_id]) unless params[:place_id].nil?
     @selected_day = params[:day]
@@ -44,6 +43,7 @@ class SchedulesController < ApplicationController
   end
 
   private
+
   def schedule_params
     params.require(:schedule).permit(:day_of_week, :start_time, :end_time)
   end

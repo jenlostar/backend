@@ -2,6 +2,7 @@
 # Esta clase representa los horarios de un lugar
 # @author Jenny Lopez
 class Schedule < ActiveRecord::Base
+  # Constante que define los dias de la semana en un objecto de tipo Hash
   DAYS = {
     MONDAY: 1,
     TUESDAY: 2,
@@ -18,7 +19,9 @@ class Schedule < ActiveRecord::Base
   # Pertenece a Lugar
   belongs_to :place
 
-  # Retorna el nombre del dia de la semana de un horario
+  # Retorna el nombre del día de la semana de un horario, este método es
+  # necesario debido a que en  base de datos se almacena únicamente un entero
+  # que representa el día de la semana. 1 => Lunes.
   def self.day_name(record)
     Schedule::DAYS.key(record.day_of_week).to_s
   end

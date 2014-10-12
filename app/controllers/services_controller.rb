@@ -1,5 +1,4 @@
 class ServicesController < ApplicationController
-
   before_action do
     @place = Place.find(params[:place_id]) unless params[:place_id].nil?
   end
@@ -39,6 +38,7 @@ class ServicesController < ApplicationController
   end
 
   private
+
   def service_params
     params.require(:service).permit(:name,
                                     :kind,
@@ -46,5 +46,4 @@ class ServicesController < ApplicationController
                                     :maximum_amount,
                                     :duration)
   end
-
 end

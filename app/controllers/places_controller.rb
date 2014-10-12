@@ -1,5 +1,7 @@
+##
+# Esta clase representa el controlador encargado de realizar las operaciones
+# CRUD de un lugar
 class PlacesController < ApplicationController
-
   def index
     @places = Place.page params[:page]
     @place = Place.where(id: params[:id]).first unless params[:id].blank?
@@ -42,11 +44,14 @@ class PlacesController < ApplicationController
   end
 
   private
+
   def place_params
-    params.require(:place).permit(:name,
-                                  :address,
-                                  :description,
-                                  :mobile_phone,
-                                  :land_line)
+    params.require(:place).permit(
+      :name,
+      :address,
+      :description,
+      :mobile_phone,
+      :land_line
+    )
   end
 end

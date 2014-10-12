@@ -7,14 +7,17 @@ require 'minitest/focus'
 require 'minitest/pride'
 require 'minitest/reporters'
 
-Minitest::Reporters.use! [Minitest::Reporters::SpecReporter.new(:color => true)]
+Minitest::Reporters.use! [Minitest::Reporters::SpecReporter.new(color: true)]
 
-class ActiveSupport::TestCase
-  ActiveRecord::Migration.check_pending!
-  fixtures :all
-  include FactoryGirl::Syntax::Methods
+module ActiveSupport
+  class TestCase
+    ActiveRecord::Migration.check_pending!
+    fixtures :all
 
-  def json(body)
-    JSON.parse(body, symbolize_names: true)
+    include FactoryGirl::Syntax::Methods
+
+    def json(body)
+      ::JSON.parse(body, symbolize_names: true)
+    end
   end
 end

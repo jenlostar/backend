@@ -1,17 +1,18 @@
 module ApplicationHelper
-
   def time_range(hour)
-    "#{hour[:start_time].strftime('%I:%M %p')} - #{hour[:end_time].strftime('%I:%M %p')}"
+    formated_start_time = hour[:start_time].strftime('%I:%M %p')
+    formated_end_time = hour[:end_time].strftime('%I:%M %p')
+    "#{formated_start_time} - #{formated_end_time}"
   end
 
-  def COP(amount)
+  def to_cop(amount)
     number_to_currency(amount, precision: 0)
   end
 
   def service_time_in_seconds(service)
     dt = service.duration
     return 0 if dt.nil?
-    (dt.hour * 3600 + dt.min * 60) rescue 0
+    (dt.hour * 3600 + dt.min * 60)
   end
 
   def service_time_in_words(service)
@@ -20,20 +21,18 @@ module ApplicationHelper
   end
 
   def service_detail(service)
-    args = [
-      service.name,
-      COP(service.minimum_amount),
-      COP(service.maximum_amount),
-      service_time_in_words(service)
-    ]
-    "%s, %s / %s, %s" % args
+    format('%s, %s / %s, %s',
+           service.name,
+           to_cop(service.minimum_amount),
+           to_cop(service.maximum_amount),
+           service_time_in_words(service))
   end
 
   def selected_index_item_class(place)
-    ' active' if @place.try(:id) === place.id
+    ' active' if @place.try(:id) == place.id
   end
 
-  def alert_class(name)
+  def alert_css_class(name)
     name.gsub('alert', 'danger').gsub('notice', 'success')
   end
 end

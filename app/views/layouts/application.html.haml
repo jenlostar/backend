@@ -57,7 +57,7 @@
     / nav
     .container.bootcards-container
       - flash.each do |name, msg|
-        .alert{:class => "alert-#{alert_class(name)}", :role => 'alert'}=msg
+        .alert{:class => "alert-#{alert_css_class(name)}", :role => 'alert'}=msg
       =yield
     :javascript
       /*
