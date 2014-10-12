@@ -1,9 +1,12 @@
+##
+# Esta clase representa los servicios de un lugar
+# @author Jenny Lopez
 class Service < ActiveRecord::Base
   enum kind: [:LADIES, :GENTLEMEN, :GIRLS, :BOYS, :ALL]
 
-  belongs_to :place
+  # Comportamiento por defecto al realizar consultas, ordernamiento
+  default_scope { order(:kind) }
 
-  def self.for_index
-    self.order(:kind).group_by(&:kind)
-  end
+  # Pertenece a Lugar
+  belongs_to :place
 end

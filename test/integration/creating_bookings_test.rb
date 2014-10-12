@@ -4,7 +4,7 @@ class CreatingBookings < ActionDispatch::IntegrationTest
   def setup
     host! 'example.com'
     @place = create(:place, name: 'Ecosalon')
-    @schedule = create(:schedule, schedulable: @place)
+    @schedule = create(:schedule, place: @place)
     @services = create_list(:service, 2, place: @place)
     @post_data = {place_id: @place.id, services: @services.map(&:id), date: @schedule.start_time}
   end

@@ -2,9 +2,9 @@ class PlacesController < ApplicationController
 
   def index
     @places = Place.page params[:page]
-    @place = Place.find(params[:id]) unless params[:id].blank?
-    @schedules = @place.schedules.for_index unless @place.nil?
-    @services = @place.services.for_index unless @place.nil?
+    @place = Place.where(id: params[:id]).first unless params[:id].blank?
+    @schedules = @place.schedules.group_by(&:day_of_week) unless @place.nil?
+    @services = @place.services.group_by(&:kind) unless @place.nil?
   end
 
   def new
@@ -43,11 +43,10 @@ class PlacesController < ApplicationController
 
   private
   def place_params
-    params.require(:place).permit(
-      :name,
-      :address,
-      :description,
-      :mobile_phone,
-      :land_line)
+    params.require(:place).permit(:name,
+                                  :address,
+                                  :description,
+                                  :mobile_phone,
+                                  :land_line)
   end
 end

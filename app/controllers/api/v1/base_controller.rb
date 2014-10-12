@@ -1,2 +1,6 @@
-class Api::V1::BaseController < ActionController::Base
+module API
+  module V1
+    class BaseController < ActionController::Base
+    end
+  end
 end

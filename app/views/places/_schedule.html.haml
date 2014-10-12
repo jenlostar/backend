@@ -5,9 +5,9 @@
       =link_to new_place_schedule_path(@place), class: 'btn btn-primary' do
         %i.fa.fa-plus
         %span=t(:add)
-  - Schedule::DAYS.keys.each do |day|
+  - Schedule::DAYS.each do |day_name, day_number|
     .list-group
-      %li.list-group-item=t(day.downcase)
-      - !@schedules[day].nil? and @schedules[day].each do |hour|
+      %li.list-group-item=t(day_name.downcase)
+      - @schedules[day_number].try(:each) do |hour|
         %li.list-group-item
           =link_to time_range(hour), edit_place_schedule_path(@place, :id => hour[:id])

@@ -16,7 +16,7 @@ FactoryGirl.define do
     land_line { Faker::Number.number(10) }
 
     # after(:build) do |place|
-    #   place.schedules = build_list(:schedule, 1, schedulable: place)
+    #   place.schedules = build_list(:schedule, 1, place: place)
     #   place.services = build_list(:service, 1, place: place)
     # end
   end
@@ -25,7 +25,7 @@ FactoryGirl.define do
     day_of_week 1
     start_time Time.new(2014, 1, 1, 8,0,0)
     end_time Time.new(2014, 1, 1, 12,0,0)
-    association :schedulable, :factory => :place
+    association :place, :factory => :place
   end
 
   factory :service do

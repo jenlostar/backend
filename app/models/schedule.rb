@@ -1,28 +1,25 @@
+##
+# Esta clase representa los horarios de un lugar
+# @author Jenny Lopez
 class Schedule < ActiveRecord::Base
   DAYS = {
-    :MONDAY    => 1,
-    :TUESDAY   => 2,
-    :WEDNESDAY => 3,
-    :THURSDAY  => 4,
-    :FRIDAY    => 5,
-    :SATURDAY  => 6,
-    :SUNDAY    => 7
+    MONDAY: 1,
+    TUESDAY: 2,
+    WEDNESDAY: 3,
+    THURSDAY: 4,
+    FRIDAY: 5,
+    SATURDAY: 6,
+    SUNDAY: 7
   }
 
-  belongs_to :schedulable, polymorphic: true
+  # Comportamiento por defecto al realizar consultas, ordernamiento
+  default_scope { order(:day_of_week, :start_time) }
 
-  def self.day_name(instance)
-    Schedule::DAYS.key(instance.day_of_week).to_s
-  end
+  # Pertenece a Lugar
+  belongs_to :place
 
-  def self.for_index
-    self.order(:day_of_week, :start_time).map do |hour|
-      nextItem = Hash.new
-      nextItem[:id] = hour.id
-      nextItem[:day] = Schedule.day_name(hour).to_sym
-      nextItem[:start] = hour.start_time
-      nextItem[:end] = hour.end_time
-      nextItem
-    end.group_by {|m| m[:day] }
+  # Retorna el nombre del dia de la semana de un horario
+  def self.day_name(record)
+    Schedule::DAYS.key(record.day_of_week).to_s
   end
 end
