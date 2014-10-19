@@ -8,6 +8,9 @@ class Place < ActiveRecord::Base
   # Tiene varios servicios
   has_many :services, dependent: :destroy
 
+  # Tiene varios servicios
+  has_many :bookings, dependent: :destroy
+
   # Comportamiento por defecto al realizar consultas,
   # incluye horarios y servicios
   default_scope do

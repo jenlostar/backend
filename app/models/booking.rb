@@ -2,6 +2,9 @@
 # Esta clase representa una reserva
 # @author Jenny Lopez
 class Booking < ActiveRecord::Base
+  # Pertenece a
+  belongs_to :place
+
   # Tiene varios servicios reservados
   has_many :booked_services
 
