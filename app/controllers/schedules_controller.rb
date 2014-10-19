@@ -5,7 +5,7 @@ class SchedulesController < ApplicationController
   end
 
   def new
-    @schedule = @place.schedules.build unless @place.nil?
+    generate_schedule
   end
 
   def edit
@@ -18,7 +18,7 @@ class SchedulesController < ApplicationController
       redirect_to selected_place_path(@place)
     else
       flash[:danger] = t(:schedule_no_created)
-      @schedule = @place.schedules.build unless @place.nil?
+      generate_schedule
       render action: 'new'
     end
   end
@@ -40,6 +40,10 @@ class SchedulesController < ApplicationController
   end
 
   private
+
+  def generate_schedule
+    @schedule = @place.schedules.build unless @place.nil?
+  end
 
   def schedule_params
     params.require(:schedule).permit(:start_time, :end_time, day_of_week: [])
