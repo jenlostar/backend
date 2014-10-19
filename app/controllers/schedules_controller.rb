@@ -4,10 +4,6 @@ class SchedulesController < ApplicationController
     @selected_day = params[:day]
   end
 
-  def index
-    @schedules = @place.schedules.for_index
-  end
-
   def new
     @schedule = @place.schedules.build unless @place.nil?
   end
@@ -17,11 +13,12 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = @place.schedules.build(schedule_params)
-    if @schedule.save
+    if @place.batch_create_schedules(batch_params).any?
       flash[:success] = t(:schedule_created)
       redirect_to selected_place_path(@place)
     else
+      flash[:danger] = t(:schedule_no_created)
+      @schedule = @place.schedules.build unless @place.nil?
       render action: 'new'
     end
   end
@@ -45,6 +42,13 @@ class SchedulesController < ApplicationController
   private
 
   def schedule_params
-    params.require(:schedule).permit(:day_of_week, :start_time, :end_time)
+    params.require(:schedule).permit(:start_time, :end_time, day_of_week: [])
+  end
+
+  def batch_params
+    schedule_params[:day_of_week].try(:map) do |day|
+      next nil if day.blank?
+      schedule_params.tap { |s| s.delete(:day_of_week) }.merge(day_of_week: day)
+    end.try(:compact)
   end
 end

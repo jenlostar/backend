@@ -2,12 +2,17 @@
   .list-group-item
     %label=t('simple_form.labels.schedule.day_of_week')
     .list-group-item-heading
-      =f.input_field :day_of_week,
-                     collection: Schedule::DAYS,
-                     include_blank: false,
-                     selected: @selected_day || @schedule.day_of_week,
-                     label_method: lambda { |el| t(el.first.downcase) },
-                     input_html: {class: 'chosen-select'}
+      - if @schedule.new_record?
+        =f.collection_check_boxes :day_of_week, Schedule::DAYS, :last, :first do |day|
+          =day.label { day.check_box + ' ' + t(day.text.downcase) }
+      - else
+        =f.input_field :day_of_week,
+                       collection: Schedule::DAYS,
+                       include_blank: false,
+                       selected: @selected_day || @schedule.day_of_week,
+                       label_method: lambda { |el| t(el.first.downcase) },
+                       input_html: {class: 'chosen-select'}
+
   .list-group-item
     %label=t('simple_form.labels.schedule.start_time')
     .list-group-item-heading

@@ -19,6 +19,7 @@ es:
   place_created: El nuevo lugar ha sido creado
   place_updated: El lugar ha sido actualizado
   schedule_created: El nuevo horario ha sido creado
+  schedule_no_created: No se pudo crear el horario
   schedule_updated: El horario ha sido actualizado
   new_service: Nuevo servicio
   edit_service: Editar servicio

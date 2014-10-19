@@ -25,4 +25,8 @@ class Schedule < ActiveRecord::Base
   def self.day_name(record)
     Schedule::DAYS.key(record.day_of_week).to_s
   end
+
+  validates :day_of_week, presence: true
+  validates :start_time, presence: true
+  validates :end_time, presence: true
 end

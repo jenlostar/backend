@@ -63,10 +63,10 @@ group :development do
   gem 'meta_request'
   gem 'quiet_assets'
   gem 'bullet'
-  gem 'pry'
 end
 
 group :test, :development do
+  gem 'pry'
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
   gem 'minitest-focus'

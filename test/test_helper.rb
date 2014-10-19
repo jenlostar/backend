@@ -15,6 +15,10 @@ module ActiveSupport
     fixtures :all
 
     include FactoryGirl::Syntax::Methods
+    include Warden::Test::Helpers
+    Warden.test_mode!
+
+    # ActiveRecord::Base.logger = Logger.new(STDOUT)
 
     def json(body)
       ::JSON.parse(body, symbolize_names: true)
