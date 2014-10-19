@@ -5,11 +5,7 @@ module API
     # una reserva
     class BookingsController < API::V1::BaseController
       def create
-        booking = Booking.new(booking_params.tap { |bp| bp.delete(:services) })
-
-        Service.where(id: booking_params[:services]).each do |s|
-          booking.booked_services.build(service_name: s.name)
-        end
+        booking = Booking.new_with_params(booking_params)
 
         if booking.save
           render json: booking.to_json(include: :booked_services), status: 200
