@@ -18,7 +18,7 @@ class Place < ActiveRecord::Base
   end
 
   # Cantidad reulstados por página
-  paginates_per 10
+  paginates_per 20
 
   def batch_create_schedules(schedule_params)
     schedules.create!(schedule_params)

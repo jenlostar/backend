@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def pending_confirm_count
+    Booking.pending_confirm_count
+  end
+
   def time_range(hour)
     formated_start_time = hour[:start_time].strftime('%I:%M %p')
     formated_end_time = hour[:end_time].strftime('%I:%M %p')

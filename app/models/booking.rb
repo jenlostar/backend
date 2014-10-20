@@ -8,6 +8,8 @@ class Booking < ActiveRecord::Base
   # Tiene varios servicios reservados
   has_many :booked_services
 
+  scope :pending_confirm_count, -> { count(confirmed_at: nil) }
+
   validates :booked_services, presence: true
 
   def self.new_with_params(booking_params)

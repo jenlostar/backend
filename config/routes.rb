@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     get 'selected' => 'places#index', as: :selected, on: :member
   end
 
+  resources :bookings, only: [:index, :update]
+
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :places, only: [:index, :show]

@@ -32,13 +32,15 @@
           %ul.nav.navbar-nav
             - if signed_in?
               %li
-                %a{:href => "#"}
-                  %i.fa.fa-dashboard
-                  Dashboard
-              %li.active
                 %a{:href => places_path}
                   %i.fa.fa-building-o
                   =t(:places)
+              %li
+                %a{:href => bookings_path}
+                  %i.fa.fa-calendar
+                  =t(:bookings)
+                  %span.badge.badge-success
+                    =pending_confirm_count
               %li
                 = link_to destroy_admin_session_path, method: :delete do
                   %i.fa.fa-user
@@ -47,11 +49,7 @@
     %nav.navmenu.offcanvas.offcanvas-left
       %ul.nav
         %li
-          %a{:href => "#"}
-            %i.fa.fa-lg.fa-dashboard
-            Dashboard
-        %li.active
-          %a{:href => "starter-template.html"}
+          %a{:href => places_path}
             %i.fa.fa-lg.fa-building-o
             =t (:places)
     / nav
