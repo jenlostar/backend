@@ -17,7 +17,10 @@ class Booking < ActiveRecord::Base
       booking.place_id = booking_params[:place_id]
 
       Service.where(id: booking_params[:services]).each do |s|
-        booking.booked_services.build(service_name: s.name)
+        booking.booked_services.build do |service|
+          service.service_name = s.name
+          service.service_duration = s.duration
+        end
       end
     end
   end
