@@ -63,6 +63,7 @@ group :development do
   gem 'meta_request'
   gem 'quiet_assets'
   gem 'bullet'
+  gem 'railroady'
 end
 
 group :test, :development do
