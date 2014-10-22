@@ -13,9 +13,9 @@ class Place < ActiveRecord::Base
 
   # Comportamiento por defecto al realizar consultas,
   # incluye horarios y servicios
-  default_scope do
-    includes(:schedules, :services).references(:schedules, :services)
-  end
+  # default_scope do
+    # includes(:schedules, :services).references(:schedules, :services)
+  # end
 
   # Cantidad reulstados por página
   paginates_per 20

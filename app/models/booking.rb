@@ -8,7 +8,7 @@ class Booking < ActiveRecord::Base
   # Tiene varios servicios reservados
   has_many :booked_services
 
-  scope :pending_confirm_count, -> { count(confirmed_at: nil) }
+  scope :pending_confirm, -> { where(confirmed_at: nil).order(:date) }
 
   validates :booked_services, presence: true
 

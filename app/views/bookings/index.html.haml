@@ -1,2 +1,21 @@
-%h1 Bookings#index
-%p Find me in app/views/bookings/index.html.haml
+.panel.panel-default.bootcards-richtext
+  .panel-heading.clearfix
+    %h3.panel-title.pull-left=t(:bookings)
+
+  %table.table.table-striped.table-hover
+    %tr
+      %th Lugar
+      %th Fecha
+      %th Servicios
+      %th Duración
+      %th Acciones
+    - @bookings.try(:each) do |booking|
+      %tr
+        %td=booking.place.name
+        %td=booking.date
+        %td
+          %ul
+            - booking.booked_services.each do |service|
+              %li=service.service_name
+        %td
+        %td

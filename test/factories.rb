@@ -35,4 +35,24 @@ FactoryGirl.define do
     duration { Time.new(2014, 1, 1, 0, 15, 0) }
     association :place, factory: :place
   end
+
+  factory :booking do
+    date Time.new
+    # association :user, factory: :user
+    association :place, factory: :place
+
+    ignore do
+      booked_services_count 2
+    end
+
+    after(:build) do |booking, opts|
+      booking.booked_services << build_list(:booked_service, opts.booked_services_count, booking: nil)
+    end
+  end
+
+  factory :booked_service do
+    service_name { Faker::Lorem.paragraph[1..50].strip }
+    service_duration { Time.new(2014, 1, 1, 0, 15, 0) }
+    booking
+  end
 end

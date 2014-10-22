@@ -1,6 +1,6 @@
 module ApplicationHelper
   def pending_confirm_count
-    Booking.pending_confirm_count
+    Booking.pending_confirm.count
   end
 
   def time_range(hour)
