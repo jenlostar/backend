@@ -17,7 +17,7 @@ module API
       private
 
       def booking_params
-        params.permit(:place_id, :date, services: [])
+        params.permit(:place_id, :user_id, :date, services: [])
       end
     end
   end

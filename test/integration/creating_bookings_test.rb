@@ -4,15 +4,18 @@ class CreatingBookings < ActionDispatch::IntegrationTest
   def setup
     host! 'example.com'
     @place = create(:place, name: 'Ecosalon')
+    @user = create(:user)
     @schedule = create(:schedule, place: @place)
     @services = create_list(:service, 2, place: @place)
 
     @post_data = { place_id: @place.id,
                    services: @services.map(&:id),
+                   user_id: @user.id,
                    date: @schedule.start_time }
   end
 
   def teardown
+    @user.destroy!
     @place.destroy!
     @schedule.destroy!
     @services.map(&:destroy!)

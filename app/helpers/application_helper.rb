@@ -13,14 +13,20 @@ module ApplicationHelper
     number_to_currency(amount, precision: 0)
   end
 
-  def service_time_in_seconds(service)
-    dt = service.duration
-    return 0 if dt.nil?
-    (dt.hour * 3600 + dt.min * 60)
+  def service_time_in_seconds(time)
+    return 0 if time.nil?
+    (time.hour * 3600 + time.min * 60)
   end
 
-  def service_time_in_words(service)
-    seconds = service_time_in_seconds(service)
+  def service_time_in_words(duration)
+    seconds = service_time_in_seconds(duration)
+    distance_of_time(seconds, two_words_connector: ' y ')
+  end
+
+  def booked_services_duration(services)
+    seconds = services.map do |service|
+      service_time_in_seconds(service.service_duration)
+    end.inject(:+)
     distance_of_time(seconds, two_words_connector: ' y ')
   end
 
@@ -29,7 +35,7 @@ module ApplicationHelper
            service.name,
            to_cop(service.minimum_amount),
            to_cop(service.maximum_amount),
-           service_time_in_words(service))
+           service_time_in_words(service.duration))
   end
 
   def selected_index_item_class(place)
