@@ -29,13 +29,13 @@
       %tr
         %td=booking.place.name
         %td=booking.date.strftime('%A %d %B  %I:%M %P')
-        %td="#{booking.user.first_name} #{booking.user.last_name}"
+        %td=booking_user_full_name(booking.user)
         %td
           %ul
             - booking.booked_services.each do |service|
               %li
                 =service.service_name
-                ="(#{service_time_in_words(service.service_duration)})"
+                =service_time_in_words(service.service_duration)
         %td=booked_services_duration(booking.booked_services)
         %td
           =link_to '#', class: 'btn btn-large btn-success' do

@@ -30,6 +30,10 @@ module ApplicationHelper
     distance_of_time(seconds, two_words_connector: ' y ')
   end
 
+  def booking_user_full_name(user)
+    "#{user.first_name} #{user.last_name}" unless user.nil?
+  end
+
   def service_detail(service)
     format('%s, %s / %s, %s',
            service.name,
