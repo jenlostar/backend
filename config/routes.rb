@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       list_except.resources :services
     end
 
-    get 'selected' => 'places#index', as: :selected
+    get 'selected' => 'places#index', as: :selected, on: :member
   end
 
   resources :bookings, only: [:index] do
