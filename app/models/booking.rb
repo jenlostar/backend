@@ -11,7 +11,19 @@ class Booking < ActiveRecord::Base
   # Tiene varios servicios reservados
   has_many :booked_services
 
-  scope :pending_confirm, -> { where(confirmed_at: nil).order(:date) }
+  scope :pending_confirm, (lambda do
+    includes(:place, :user, :booked_services)
+    .where(confirmed_at: nil, canceled_at: nil)
+    .order(:date)
+  end)
+
+  scope :canceled, (lambda do
+    where.not(canceled_at: nil).order(:date)
+  end)
+
+  scope :approved, (lambda do
+    where.not(confirmed_at: nil).order(:date)
+  end)
 
   validates :booked_services, presence: true
   validates :place, presence: true

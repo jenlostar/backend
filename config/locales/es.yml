@@ -27,6 +27,11 @@ es:
   service_updated: Servicio actualizado
   service_created: Servicio creado
   delete_service_confirm: Borrar servicio?
+  booking_approved: Reserva aprobada
+  booking_canceled: Reserva anulada
+  approved_bookings: Reservas aprobadas
+  canceled_bookings: Reservas canceladas
+  pending_bookings: Reservas pendientes
   minutes: minutos
   hours: horas
   and: y

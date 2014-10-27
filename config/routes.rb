@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
   concern :paginatable do
     get '(page/:page)', action: :index, on: :collection, as: ''
   end
@@ -14,10 +15,20 @@ Rails.application.routes.draw do
       list_except.resources :services
     end
 
-    get 'selected' => 'places#index', as: :selected, on: :member
+    get 'selected' => 'places#index', as: :selected
   end
 
-  resources :bookings, only: [:index, :update]
+  resources :bookings, only: [:index] do
+    member do
+      post 'approve'
+      post 'discard'
+    end
+
+    collection do
+      get 'canceled' => 'bookings#canceled', as: :canceled
+      get 'approved' => 'bookings#approved', as: :approved
+    end
+  end
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do

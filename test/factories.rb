@@ -14,7 +14,7 @@ FactoryGirl.define do
     password_confirmation password
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
-    gender { ['M', 'F', 'N'].sample }
+    gender { %w(M F N).sample }
     phone_number { Faker::Number.number(10) }
   end
 
@@ -25,10 +25,26 @@ FactoryGirl.define do
     mobile_phone { Faker::Number.number(10) }
     land_line { Faker::Number.number(10) }
 
-    # after(:build) do |place|
-    #   place.schedules = build_list(:schedule, 1, place: place)
-    #   place.services = build_list(:service, 1, place: place)
-    # end
+    factory :place_with_schedules_and_services do
+      ignore do
+        schedules_count 2
+        services_count 2
+      end
+
+      after(:build) do |place, opts|
+        place.schedules << build_list(
+          :schedule,
+          opts.schedules_count,
+          place: nil
+        )
+
+        place.services << build_list(
+          :service,
+          opts.services_count,
+          place: nil
+        )
+      end
+    end
   end
 
   factory :schedule do
@@ -48,7 +64,7 @@ FactoryGirl.define do
 
   factory :booking do
     date Time.new
-    # association :user, factory: :user
+    association :user, factory: :user
     association :place, factory: :place
 
     ignore do
@@ -56,7 +72,10 @@ FactoryGirl.define do
     end
 
     after(:build) do |booking, opts|
-      booking.booked_services << build_list(:booked_service, opts.booked_services_count, booking: nil)
+      booking.booked_services << build_list(
+        :booked_service,
+        opts.booked_services_count, booking: nil
+      )
     end
   end
 

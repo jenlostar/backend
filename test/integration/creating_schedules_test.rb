@@ -28,6 +28,7 @@ class CreatingSchedules < ActionDispatch::IntegrationTest
     refute_empty response.body
 
     assert_redirected_to selected_place_path(@place)
+    assert_equal I18n.t(:schedule_created), flash[:success]
   end
 
   def test_create_an_schedule_without_days_selected
