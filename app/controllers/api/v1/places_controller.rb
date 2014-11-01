@@ -8,9 +8,7 @@ module API
       # Listado de lugares
       # GET /api/v1/places
       def index
-        places = Place.limit(10)
-        includes = [:schedules, :services]
-        render json: places.to_json(include: includes), status: 200
+        @places = Place.limit(10)
       end
 
       ##
