@@ -13,16 +13,16 @@ class ListingPlacesTest < ActionDispatch::IntegrationTest
 
     refute_empty response.body
 
-    data = json(response.body)
+    data = json(response.body).first
 
-    assert_equal place.name,         data.first[:name]
-    assert_equal place.address,      data.first[:address]
-    assert_equal place.description,  data.first[:description]
-    assert_equal place.mobile_phone, data.first[:mobile_phone]
-    assert_equal place.land_line,    data.first[:land_line]
+    assert_equal place.name,         data[:name]
+    assert_equal place.address,      data[:address]
+    assert_equal place.description,  data[:description]
+    assert_equal place.mobile_phone, data[:mobile_phone]
+    assert_equal place.land_line,    data[:land_line]
 
-    assert_includes data.first, :services
-    assert_includes data.first, :schedules
+    assert_includes data, :services
+    assert_includes data, :schedules
   end
 
   def test_return_place_by_id
