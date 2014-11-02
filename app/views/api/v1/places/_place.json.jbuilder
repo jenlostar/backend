@@ -12,4 +12,10 @@ json.services place.services do |service|
   json.duration service_time_in_words(service.duration)
 end
 
-json.schedules place.schedules
+json.schedules place.schedules do |schedule|
+  json.id schedule.id
+  json.day_of_week schedule.day_of_week
+  json.day_of_week_name t(Schedule.day_name(schedule).downcase)
+  json.start_time schedule.start_time.strftime('%I:%M %P')
+  json.end_time schedule.end_time.strftime('%I:%M %P')
+end

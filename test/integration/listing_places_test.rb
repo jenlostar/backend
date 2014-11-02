@@ -6,22 +6,23 @@ class ListingPlacesTest < ActionDispatch::IntegrationTest
   end
 
   def test_returns_list_of_all_places
-    places = create_list(:place, 11)
+    place = create(:place_with_schedules_and_services)
+
     get api_v1_places_path
     assert_equal 200, response.status
+
     refute_empty response.body
 
     data = json(response.body)
-    assert_equal 10, data.length
 
-    assert_equal places[0].name, data[0][:name]
-    assert_equal places[0].address, data[0][:address]
-    assert_equal places[0].description, data[0][:description]
-    assert_equal places[0].mobile_phone, data[0][:mobile_phone]
-    assert_equal places[0].land_line, data[0][:land_line]
+    assert_equal place.name,         data.first[:name]
+    assert_equal place.address,      data.first[:address]
+    assert_equal place.description,  data.first[:description]
+    assert_equal place.mobile_phone, data.first[:mobile_phone]
+    assert_equal place.land_line,    data.first[:land_line]
 
-    assert_includes data[0], :services
-    assert_includes data[0], :schedules
+    assert_includes data.first, :services
+    assert_includes data.first, :schedules
   end
 
   def test_return_place_by_id

@@ -8,7 +8,7 @@ module API
       # Listado de lugares
       # GET /api/v1/places
       def index
-        @places = Place.limit(10)
+        @places = Place.completed
       end
 
       ##

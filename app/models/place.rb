@@ -20,6 +20,11 @@ class Place < ActiveRecord::Base
   # Cantidad reulstados por página
   paginates_per 20
 
+  scope :completed, (lambda do
+    includes(:services, :schedules)
+    .where.not(services: { id: nil }, schedules: { id: nil })
+  end)
+
   def batch_create_schedules(schedule_params)
     schedules.create!(schedule_params)
   rescue
