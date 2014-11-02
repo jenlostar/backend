@@ -1,9 +1,22 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-
   concern :paginatable do
     get '(page/:page)', action: :index, on: :collection, as: ''
+  end
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      devise_for :users, skip: [:sessions, :registrations, :passwords]
+
+      devise_scope :user do
+        post '/login', to: 'sessions#create'
+        delete '/logout', to: 'sessions#destroy'
+        post '/signup', to: 'registrations#create'
+      end
+
+      resources :places, only: [:index, :show]
+      resources :bookings, only: [:create, :index]
+    end
   end
 
   devise_for :admins
@@ -27,13 +40,6 @@ Rails.application.routes.draw do
     collection do
       get 'canceled' => 'bookings#canceled', as: :canceled
       get 'approved' => 'bookings#approved', as: :approved
-    end
-  end
-
-  namespace :api, defaults: { format: :json } do
-    namespace :v1 do
-      resources :places, only: [:index, :show]
-      resources :bookings, only: [:create, :index]
     end
   end
 
