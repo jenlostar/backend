@@ -18,7 +18,7 @@ gem 'font-awesome-rails'
 gem 'simple_form'
 gem 'chosen-rails'
 gem 'dotiw', github: 'radar/dotiw', branch: 'upgrade'
-gem 'kaminari-bootstrap', '~> 0.1.3'
+gem 'kaminari-bootstrap'
 gem 'unicorn'
 gem 'doorkeeper'
 
