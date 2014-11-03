@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: schedules
+#
+#  id          :integer          not null, primary key
+#  day_of_week :integer
+#  start_time  :time
+#  end_time    :time
+#  place_id    :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 ##
 # Esta clase representa los horarios de un lugar
 # @author Jenny Lopez

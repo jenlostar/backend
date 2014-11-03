@@ -5,6 +5,7 @@ ruby '2.1.3'
 gem 'rails', '4.1.6'
 
 gem 'pg'
+gem 'annotate', '~> 2.6.5'
 
 gem 'devise'
 gem 'sass-rails', '~> 4.0.3'

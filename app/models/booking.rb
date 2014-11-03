@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: bookings
+#
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  place_id     :integer
+#  date         :datetime
+#  created_at   :datetime
+#  updated_at   :datetime
+#  confirmed_at :datetime
+#  canceled_at  :datetime
+#
+
 ##
 # Esta clase representa una reserva
 # @author Jenny Lopez

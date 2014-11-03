@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: places
+#
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  address      :string(255)
+#  description  :string(255)
+#  mobile_phone :string(10)
+#  land_line    :string(10)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 ##
 # Esta clase representa los lugares
 # @author Jenny Lopez
