@@ -93,7 +93,17 @@ es:
               blank: Debe seleccionar uno o mas servicios
         user:
           attributes:
+            first_name:
+              blank: No puede ser vacio
+            last_name:
+              blank: No puede ser vacio
+            phone_bumber:
+              blank: No puede ser vacio
+            gender:
+              blank: No puede ser vacio
             email:
-              taken: Ya existe un usuario registrado con el email
+              taken: Ya existe un usuario registrado
+              blank: No puede ser vacio
             password:
-              too_short: debe tener mínimo 5 caracteres
+              blank: No puede ser vacio
+              too_short: Debe tener mínimo 5 caracteres
