@@ -104,6 +104,7 @@ es:
             email:
               taken: Ya existe un usuario registrado
               blank: No puede ser vacio
+              invalid: Invalido
             password:
               blank: No puede ser vacio
               too_short: Debe tener mínimo 5 caracteres
