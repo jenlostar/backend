@@ -97,7 +97,7 @@ es:
               blank: No puede ser vacio
             last_name:
               blank: No puede ser vacio
-            phone_bumber:
+            phone_number:
               blank: No puede ser vacio
             gender:
               blank: No puede ser vacio
@@ -107,3 +107,5 @@ es:
             password:
               blank: No puede ser vacio
               too_short: Debe tener mínimo 5 caracteres
+            password_confirmation:
+              confirmation: Las claves no coinciden
