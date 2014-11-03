@@ -95,3 +95,5 @@ es:
           attributes:
             email:
               taken: Ya existe un usuario registrado con el email
+            password:
+              too_short: debe tener mínimo 5 caracteres
