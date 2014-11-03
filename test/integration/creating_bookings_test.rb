@@ -12,6 +12,20 @@ class CreatingBookings < ActionDispatch::IntegrationTest
                    services: @services.map(&:id),
                    user_id: @user.id,
                    date: @schedule.start_time }
+
+    @app = Doorkeeper::Application.create!(
+      name: 'Doorkeeper App',
+      :redirect_uri => 'urn:ietf:wg:oauth:2.0:oob'
+    )
+
+    user = attributes_for(:user)
+    post api_v1_signup_path, user
+
+    assert_equal 200, response.status
+    data = json(response.body)
+    assert_includes data, :access_token
+
+    @bearer = "Bearer #{data[:access_token]}"
   end
 
   def teardown
@@ -23,7 +37,7 @@ class CreatingBookings < ActionDispatch::IntegrationTest
   end
 
   def test_create_a_booking
-    post api_v1_bookings_path, @post_data
+    post api_v1_bookings_path, @post_data, authorization: @bearer, client_id: @app.uid
 
     assert_equal 200, response.status
     refute_empty response.body
@@ -41,7 +55,7 @@ class CreatingBookings < ActionDispatch::IntegrationTest
   end
 
   def test_create_booking_without_services
-    post api_v1_bookings_path, @post_data.merge(services: [])
+    post api_v1_bookings_path, @post_data.merge(services: []), authorization: @bearer, client_id: @app.uid
 
     assert_equal 404, response.status
     refute_empty response.body

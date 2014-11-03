@@ -1,21 +1,17 @@
 Rails.application.routes.draw do
 
+  use_doorkeeper
   concern :paginatable do
     get '(page/:page)', action: :index, on: :collection, as: ''
   end
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      devise_for :users, skip: [:sessions, :registrations, :passwords]
-
-      devise_scope :user do
-        post '/login', to: 'sessions#create'
-        delete '/logout', to: 'sessions#destroy'
-        post '/signup', to: 'registrations#create'
-      end
-
       resources :places, only: [:index, :show]
       resources :bookings, only: [:create, :index]
+      post 'login' => 'users#login', as: 'login'
+      post 'logout' => 'users#logout', as: 'logout'
+      post 'signup' => 'users#signup', as: 'signup'
     end
   end
 

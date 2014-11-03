@@ -49,4 +49,11 @@ module ApplicationHelper
   def alert_css_class(name)
     name.gsub('alert', 'danger').gsub('notice', 'success')
   end
+
+  def generate_access_token(user)
+    Doorkeeper::AccessToken.create!(
+      application_id:    Doorkeeper::Application.first.id,
+      resource_owner_id: user.id
+    )
+  end
 end

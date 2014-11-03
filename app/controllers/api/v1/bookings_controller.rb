@@ -4,6 +4,8 @@ module API
     # Esta clase representa un punto de montaje en el api para generar
     # una reserva
     class BookingsController < API::V1::BaseController
+      doorkeeper_for :all
+
       def create
         booking = Booking.new_with_params(booking_params)
 

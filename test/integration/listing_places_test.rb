@@ -3,12 +3,25 @@ require 'test_helper'
 class ListingPlacesTest < ActionDispatch::IntegrationTest
   def setup
     host! 'example.com'
+    @app = Doorkeeper::Application.create!(
+      name: 'Doorkeeper App',
+      :redirect_uri => 'urn:ietf:wg:oauth:2.0:oob'
+    )
+
+    user = attributes_for(:user)
+    post api_v1_signup_path, user
+
+    assert_equal 200, response.status
+    data = json(response.body)
+    assert_includes data, :access_token
+
+    @bearer = "Bearer #{data[:access_token]}"
   end
 
   def test_returns_list_of_all_places
     place = create(:place_with_schedules_and_services)
 
-    get api_v1_places_path
+    get api_v1_places_path, nil, authorization: @bearer, client_id: @app.uid
     assert_equal 200, response.status
 
     refute_empty response.body
@@ -27,7 +40,7 @@ class ListingPlacesTest < ActionDispatch::IntegrationTest
 
   def test_return_place_by_id
     place = create(:place, name: 'Ecosalon')
-    get api_v1_place_path(place)
+    get api_v1_place_path(place), nil, authorization: @bearer, client_id: @app.uid
     assert_equal 200, response.status
 
     place_response = json(response.body)

@@ -4,6 +4,8 @@ module API
     # Esta clase representa un punto de montaje en el api para
     # enviar los lugares disponibles
     class PlacesController < API::V1::BaseController
+      doorkeeper_for :all
+
       ##
       # Listado de lugares
       # GET /api/v1/places

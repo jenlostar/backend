@@ -91,3 +91,7 @@ es:
           attributes:
             booked_services:
               blank: Debe seleccionar uno o mas servicios
+        user:
+          attributes:
+            email:
+              taken: Ya existe un usuario registrado con el email
