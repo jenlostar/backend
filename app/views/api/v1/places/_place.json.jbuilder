@@ -5,6 +5,7 @@ json.mobile_phone place.mobile_phone
 json.land_line place.land_line
 
 json.services place.services do |service|
+  json.id service.id
   json.name service.name
   json.kind t(service.kind.to_s.downcase)
   json.min_amount to_cop(service.minimum_amount)
