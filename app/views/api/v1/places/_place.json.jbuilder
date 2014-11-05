@@ -12,6 +12,7 @@ json.services place.services do |service|
   json.min_amount to_cop(service.minimum_amount)
   json.max_amount to_cop(service.maximum_amount)
   json.duration service_time_in_words(service.duration)
+  json.duration_timestamp service.duration.to_i
 end
 
 json.schedules place.schedules do |schedule|
