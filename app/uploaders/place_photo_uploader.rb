@@ -5,7 +5,7 @@ class PlacePhotoUploader < CarrierWave::Uploader::Base
 
   storage :postgresql_lo
   process convert:  'jpg'
-  # process resize_to_fill: [600, 315]
+  process resize_to_fill: [300, 157]
 
   def extension_white_list
     %w(jpg jpeg gif png)
