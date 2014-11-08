@@ -99,9 +99,9 @@ ActiveRecord::Schema.define(version: 20141108152022) do
     t.string   "land_line",    limit: 10
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "photo1",                  null: false
-    t.integer  "photo2",                  null: false
-    t.integer  "photo3",                  null: false
+    t.integer  "photo1"
+    t.integer  "photo2"
+    t.integer  "photo3"
   end
 
   create_table "schedules", force: true do |t|
