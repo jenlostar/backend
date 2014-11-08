@@ -58,6 +58,8 @@ module ApplicationHelper
   end
 
   def lo_image_url(attribute)
-    "#{Rails.application.secrets.host_url}/lo/#{attribute.identifier}" if attribute.file.size > 0
+    if !attribute.nil? && !attribute.file.nil? && attribute.file.size > 0
+      "#{Rails.application.secrets.host_url}/lo/#{attribute.identifier}"
+    end
   end
 end
