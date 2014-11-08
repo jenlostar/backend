@@ -17,15 +17,18 @@
   .list-group-item
     =f.label :photo1, t('simple_form.labels.place.photo1')
     .list-group-item-heading=f.input_field :photo1, as: :file, class: 'form-control'
-    =lo_image_url @place.photo1
+    =link_to lo_image_url(@place.photo1), target: '_new' do
+      =image_tag lo_image_url(@place.photo1), style: "width: 300px;height: 175px"
   .list-group-item
     =f.label :photo2, t('simple_form.labels.place.photo2')
     .list-group-item-heading=f.input_field :photo2, as: :file, class: 'form-control'
-    =lo_image_url @place.photo2
+    =link_to lo_image_url(@place.photo2), target: '_new' do
+      =image_tag lo_image_url(@place.photo2), style: "width: 300px;height: 175px"
   .list-group-item
     =f.label :photo3, t('simple_form.labels.place.photo3')
     .list-group-item-heading=f.input_field :photo3, as: :file, class: 'form-control'
-    =lo_image_url @place.photo3
+    =link_to lo_image_url(@place.photo3), target: '_new' do
+      =image_tag lo_image_url(@place.photo3), style: "width: 300px;height: 175px"
   .list-group-item
     .list-group-item-heading
       =f.button :submit, 'Enviar', class: 'btn-primary'
