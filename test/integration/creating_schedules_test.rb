@@ -27,7 +27,7 @@ class CreatingSchedules < ActionDispatch::IntegrationTest
     assert_equal 302, response.status
     refute_empty response.body
 
-    assert_redirected_to selected_place_path(@place)
+    assert_redirected_to edit_place_path(@place)
     assert_equal I18n.t(:schedule_created), flash[:success]
   end
 

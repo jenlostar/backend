@@ -16,7 +16,7 @@
             %span=t(:add)
   .list-group
     - @places.each do |place|
-      %a.list-group-item{:href => selected_place_path(place), class: selected_index_item_class(place)}
+      %a.list-group-item{:href => edit_place_path(place), class: selected_index_item_class(place)}
         %i.fa.fa-3x.fa-building-o.pull-left
         %h5.list-group-item-heading
           ="#{place.name}, #{place.address}"

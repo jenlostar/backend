@@ -18,13 +18,10 @@ Rails.application.routes.draw do
   devise_for :admins
 
   resources :places, concerns: :paginatable do
-
     with_options except: [:index, :show] do |list_except|
       list_except.resources :schedules
       list_except.resources :services
     end
-
-    get 'selected' => 'places#index', as: :selected, on: :member
   end
 
   resources :bookings, only: [:index] do
@@ -38,6 +35,8 @@ Rails.application.routes.draw do
       get 'approved' => 'bookings#approved', as: :approved
     end
   end
+
+  mount PostgresqlLoStreamer::Engine => "/lo"
 
   root 'places#index'
 end

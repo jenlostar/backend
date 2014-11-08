@@ -1,10 +1,10 @@
 .panel.panel-default.bootcards-richtext
   .panel-heading.clearfix
     %h3.panel-title.pull-left
-      =link_to "#{@place.name}", selected_place_path(@place)
+      =link_to "#{@place.name}", edit_place_path(@place)
       =" - #{t(:edit_service)}"
     .btn-group.pull-right
-      =link_to selected_place_path(@place), class: 'btn btn-info' do
+      =link_to edit_place_path(@place), class: 'btn btn-info' do
         %i.fa.fa-arrow-left
         %span=t(:back)
       =link_to place_service_path(@place, @service), class: 'btn btn-danger', data: {confirm: t(:delete_service_confirm)}, method: :delete do

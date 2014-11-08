@@ -2,11 +2,10 @@
 # Esta clase representa el controlador encargado de realizar las operaciones
 # CRUD de un lugar
 class PlacesController < ApplicationController
+  before_action :set_place, only: [:edit, :destroy]
+
   def index
     @places = Place.page params[:page]
-    @place = Place.where(id: params[:id]).first unless params[:id].blank?
-    @schedules = @place.schedules.group_by(&:day_of_week) unless @place.nil?
-    @services = @place.services.group_by(&:kind) unless @place.nil?
   end
 
   def new
@@ -24,7 +23,8 @@ class PlacesController < ApplicationController
   end
 
   def edit
-    @place = Place.find(params[:id])
+    @schedules = @place.schedules.group_by(&:day_of_week)
+    @services = @place.services.group_by(&:kind)
   end
 
   def update
@@ -38,12 +38,15 @@ class PlacesController < ApplicationController
   end
 
   def destroy
-    @place = Place.find(params[:id])
     @place.destroy
     redirect_to places_path
   end
 
   private
+
+  def set_place
+    @place = Place.find(params[:id])
+  end
 
   def place_params
     params.require(:place).permit(
@@ -51,7 +54,10 @@ class PlacesController < ApplicationController
       :address,
       :description,
       :mobile_phone,
-      :land_line
+      :land_line,
+      :photo1,
+      :photo2,
+      :photo3
     )
   end
 end

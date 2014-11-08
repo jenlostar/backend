@@ -59,6 +59,9 @@ es:
         description: Descripción
         mobile_phone: Teléfono móvil
         land_line: Teléfono fijo
+        photo1: Foto 1
+        photo2: Foto 2
+        photo3: Foto 3
       schedule:
         day_of_week: Día de la semana
         start_time: Hora inicio

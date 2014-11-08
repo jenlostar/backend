@@ -34,6 +34,7 @@ class ListingPlacesTest < ActionDispatch::IntegrationTest
     assert_equal place.mobile_phone, data[:mobile_phone]
     assert_equal place.land_line,    data[:land_line]
 
+    assert_includes data, :photos
     assert_includes data, :services
     assert_includes data, :schedules
   end

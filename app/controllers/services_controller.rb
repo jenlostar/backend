@@ -15,7 +15,7 @@ class ServicesController < ApplicationController
     @service = @place.services.build(service_params)
     if @service.save
       flash[:success] = t(:service_created)
-      redirect_to selected_place_path(@place)
+      redirect_to edit_place_path(@place)
     else
       render action: 'new'
     end
@@ -25,7 +25,7 @@ class ServicesController < ApplicationController
     @service = Service.find(params[:id])
     if @service.update(service_params)
       flash[:success] = t(:service_updated)
-      redirect_to selected_place_path(@place)
+      redirect_to edit_place_path(@place)
     else
       render 'edit'
     end
@@ -34,7 +34,7 @@ class ServicesController < ApplicationController
   def destroy
     @service = Service.find(params[:id])
     @service.destroy
-    redirect_to selected_place_path(@place)
+    redirect_to edit_place_path(@place)
   end
 
   private

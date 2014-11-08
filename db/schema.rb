@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102171334) do
+ActiveRecord::Schema.define(version: 20141108152022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,9 @@ ActiveRecord::Schema.define(version: 20141102171334) do
     t.string   "land_line",    limit: 10
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "photo1",                  null: false
+    t.integer  "photo2",                  null: false
+    t.integer  "photo3",                  null: false
   end
 
   create_table "schedules", force: true do |t|

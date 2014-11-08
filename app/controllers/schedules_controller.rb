@@ -15,7 +15,7 @@ class SchedulesController < ApplicationController
   def create
     if @place.batch_create_schedules(batch_params).any?
       flash[:success] = t(:schedule_created)
-      redirect_to selected_place_path(@place)
+      redirect_to edit_place_path(@place)
     else
       flash[:danger] = t(:schedule_no_created)
       generate_schedule
@@ -27,7 +27,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
     if @schedule.update(schedule_params)
       flash[:success] = t(:schedule_updated)
-      redirect_to selected_place_path(@place)
+      redirect_to edit_place_path(@place)
     else
       render 'edit'
     end
@@ -36,7 +36,7 @@ class SchedulesController < ApplicationController
   def destroy
     @schedule = Schedule.find(params[:id])
     @schedule.destroy
-    redirect_to selected_place_path(@place)
+    redirect_to edit_place_path(@place)
   end
 
   private

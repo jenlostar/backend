@@ -10,50 +10,20 @@
     =javascript_include_tag 'application'
     =csrf_meta_tags
   %body
-    / fixed top navbar
-    .navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+    .navbar.navbar-default.navbar-fixed-top(role="navigation")
       .container
-        .navbar-header
-          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-            %span.sr-only Navegación alterna
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-        %button.btn.btn-default.btn-back.pull-left.hidden{:onclick => "history.back()", :type => "button"}
-          %i.fa.fa-lg.fa-chevron-left
-          %span Atras
-        / menu button to show/ hide the off canvas menu
-        %button.btn.btn-default.btn-menu.pull-left{"data-toggle" => "offcanvas", :type => "button"}
-          %i.fa.fa-lg.fa-bars
-          %span Menu
-        %a.navbar-brand{:href => "/", :title => "Backend"} Backend
-        / navbar menu options: shown on desktop only
-        .navbar-collapse.collapse
-          %ul.nav.navbar-nav
-            - if signed_in?
-              %li
-                %a{:href => places_path}
-                  %i.fa.fa-building-o
-                  =t(:places)
-              %li
-                %a{:href => bookings_path}
-                  %i.fa.fa-calendar
-                  =t(:bookings)
-                  %span.badge.badge-success
-                    =pending_confirm_count
-              %li
-                = link_to destroy_admin_session_path, method: :delete do
-                  %i.fa.fa-user
-                  =t(:sign_out)
-    / slide in off canvas menu (mobile only)
-    %nav.navmenu.offcanvas.offcanvas-left
-      %ul.nav
-        %li
-          %a{:href => places_path}
-            %i.fa.fa-lg.fa-building-o
-            =t (:places)
-    / nav
-    .container.bootcards-container
+        = link_to places_path, class: 'btn btn-primary btn-lg' do
+          %i.fa.fa-building-o
+          =t(:places)
+        = link_to bookings_path, class: 'btn btn-primary btn-lg' do
+          %i.fa.fa-calendar
+          =t(:bookings)
+          %span.badge.badge-success
+            =pending_confirm_count
+        = link_to destroy_admin_session_path, method: :delete, class: 'btn btn-primary btn-lg' do
+          %i.fa.fa-user
+          =t(:sign_out)
+    .container
       - flash.each do |name, msg|
         .alert{:class => "alert-#{alert_css_class(name)}", :role => 'alert'}=msg
       =yield

@@ -25,6 +25,10 @@ class Place < ActiveRecord::Base
   # Tiene varios servicios
   has_many :bookings, dependent: :destroy
 
+  mount_uploader :photo1, PlacePhotoUploader
+  mount_uploader :photo2, PlacePhotoUploader
+  mount_uploader :photo3, PlacePhotoUploader
+
   # Comportamiento por defecto al realizar consultas,
   # incluye horarios y servicios
   # default_scope do
@@ -32,7 +36,7 @@ class Place < ActiveRecord::Base
   # end
 
   # Cantidad reulstados por página
-  paginates_per 20
+  paginates_per 10
 
   scope :completed, (lambda do
     includes(:services, :schedules)

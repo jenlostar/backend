@@ -21,17 +21,18 @@
       %th
     - @bookings.try(:each) do |booking|
       %tr
-        %td=booking.place.name
-        %td=booking.date.strftime('%A %d %B  %I:%M %P')
-        %td=booking_user_full_name(booking.user)
-        %td
+        %td(style='word-wrap: break-word')=booking.place.name
+        %td(style='white-space: nowrap')=booking.date.strftime('%Y-%m-%d %I:%M %P')
+        %td(style='word-wrap: break-word')=booking_user_full_name(booking.user)
+        %td(style='word-wrap: break-word')
           %ul
             - booking.booked_services.each do |service|
               %li
-                =service.service_name
+                %b=service.service_name
+                %br
                 =service_time_in_words(service.service_duration)
-        %td=booked_services_duration(booking.booked_services)
-        %td
+        %td(style='white-space: nowrap')=booked_services_duration(booking.booked_services)
+        %td(style='min-width: 219px')
           .btn-group
             - if booking.confirmed_at.nil? && booking.canceled_at.nil?
               =link_to approve_booking_path(booking), class: 'btn btn-large btn-success', method: :post do
