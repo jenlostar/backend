@@ -25,25 +25,31 @@ class Booking < ActiveRecord::Base
   # Tiene varios servicios reservados
   has_many :booked_services
 
+  # método para obtener reservas por confirmar
   scope :pending_confirm, (lambda do
     includes(:place, :user, :booked_services)
     .where(confirmed_at: nil, canceled_at: nil)
     .order(:date)
   end)
 
+  # método para obtener reservas canceladas
   scope :canceled, (lambda do
     where.not(canceled_at: nil).order(:date)
   end)
 
+  # método para obtener reservas aprovadas/confirmadas
   scope :approved, (lambda do
     where.not(confirmed_at: nil).order(:date)
   end)
 
+  # validaciones
   validates :booked_services, presence: true
   validates :place, presence: true
   validates :user, presence: true
   validates :date, presence: true
 
+  # método que crea una nueva reserva y adiciona los servicios seleccionados
+  # por el usuario
   def self.new_with_params(booking_params)
     services = booking_params.delete(:services)
     booking = Booking.new(booking_params)

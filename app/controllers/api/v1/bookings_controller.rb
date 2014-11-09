@@ -16,6 +16,15 @@ module API
         end
       end
 
+      def index
+        @user = current_resource_owner
+
+        included_relations = [:place, :user, :booked_services]
+        @pending = @user.bookings.includes(*included_relations)
+
+        render json: bookings.to_json(*included_relations), status: 200
+      end
+
       private
 
       def booking_params
