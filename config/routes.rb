@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       post 'login' => 'users#login', as: 'login'
       post 'logout' => 'users#logout', as: 'logout'
       post 'signup' => 'users#signup', as: 'signup'
+      post '/users/profile' => 'users#update', as: 'update'
     end
   end
 
