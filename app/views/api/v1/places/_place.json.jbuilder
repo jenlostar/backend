@@ -7,6 +7,9 @@ json.land_line place.land_line
 
 json.photos [place.photo1, place.photo2, place.photo3].map { |photo| lo_image_url(photo) }
 
+json.rating_avg place.rating_average
+json.rating_count place.ratings.count
+
 json.services place.services do |service|
   json.id service.id
   json.name service.name

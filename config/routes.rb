@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :places, only: [:index, :show]
       resources :bookings, only: [:create, :index]
+      resources :ratings, only: [:create]
+
       post 'login' => 'users#login', as: 'login'
       post 'logout' => 'users#logout', as: 'logout'
       post 'signup' => 'users#signup', as: 'signup'

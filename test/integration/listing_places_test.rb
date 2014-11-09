@@ -28,15 +28,18 @@ class ListingPlacesTest < ActionDispatch::IntegrationTest
 
     data = json(response.body).first
 
-    assert_equal place.name,         data[:name]
-    assert_equal place.address,      data[:address]
-    assert_equal place.description,  data[:description]
-    assert_equal place.mobile_phone, data[:mobile_phone]
-    assert_equal place.land_line,    data[:land_line]
+    assert_equal place.name,                data[:name]
+    assert_equal place.address,             data[:address]
+    assert_equal place.description,         data[:description]
+    assert_equal place.mobile_phone,        data[:mobile_phone]
+    assert_equal place.land_line,           data[:land_line]
+    assert_equal place.rating_average.to_f, data[:rating_avg].to_f
 
     assert_includes data, :photos
     assert_includes data, :services
     assert_includes data, :schedules
+
+    assert_equal 3, data[:photos].length
   end
 
   def test_return_place_by_id

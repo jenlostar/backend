@@ -24,6 +24,7 @@ FactoryGirl.define do
     description { Faker::Lorem.sentence(3) }
     mobile_phone { Faker::Number.number(10) }
     land_line { Faker::Number.number(10) }
+    rating_average { (0.0..5.0).step(0.5).to_a.sample }
 
     factory :place_with_schedules_and_services do
       ignore do

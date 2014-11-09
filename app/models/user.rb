@@ -28,6 +28,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :bookings
+  has_many :ratings
+
+  default_scope -> { includes(:ratings) }
 
   validates :first_name, presence: true
   validates :last_name, presence: true
