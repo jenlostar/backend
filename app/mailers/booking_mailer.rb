@@ -13,7 +13,7 @@ class BookingMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Mi Peluquería - Confirmación de reserva')
   end
 
-  def canel_notification(booking_id)
+  def cancel_notification(booking_id)
     @booking = Booking.find_by(id: booking_id)
     @user = @booking.user
     @place = @booking.place
