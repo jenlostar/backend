@@ -1,0 +1,30 @@
+%table{table_attrs}
+  %caption{caption_attrs}
+    La Reserva fue cancelada
+  %tr
+    %td{td_attrs}
+      %b Lugar:
+      =@place.name
+      =@place.address
+  %tr
+    %td{td_attrs}
+      %b Cuando:
+      =@booking.date.strftime('%A %d %B %Y %I:%M %P')
+  %tr
+    %td{td_attrs}
+      %b Duración estimada:
+      =booked_services_duration(@services)
+  %tr
+    %td{td_attrs}
+      %b Servicios:
+  %tr
+    %td{td_attrs}
+      %ul
+        - @services.try(:each) do |service|
+          %li
+            =service.service_name
+            =service_time_in_words(service.service_duration)
+  %tr
+    %td{td_attrs}
+      Esta notificación ha sido generada por Mi Peluquería
+      =Time.now.strftime('%Y')

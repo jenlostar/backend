@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
   def approve
     booking = Booking.find(params[:id])
     if booking.update_attribute(:confirmed_at, DateTime.now)
+      BookingMailer.approve_notification(booking.id).deliver
       flash[:success] = t(:booking_approved)
     else
       flash[:error] = t(:booking_not_approved)
@@ -29,7 +30,7 @@ class BookingsController < ApplicationController
   def discard
     booking = Booking.find(params[:id])
     if booking.update_attribute(:canceled_at, DateTime.now)
-      BookingMailer.approve_notification(booking.id).deliver
+      BookingMailer.cancel_notification(booking.id).deliver
       flash[:success] = t(:booking_canceled)
     else
       flash[:error] = t(:booking_not_canceled)
