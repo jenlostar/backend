@@ -8,4 +8,4 @@ json.date_extended      l(booking.date, format: '%A %d %b %I:%M %p')
 
 json.available          booking.available
 
-json.duration           booking.booked_services.sum(:service_duration)
+json.duration           booking.duration

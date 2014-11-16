@@ -27,21 +27,28 @@ module API
       def bookings
         date = Date.parse(place_params[:on_day]).beginning_of_day
 
-        starts = date.advance(:hours => 7).to_i
-        ends = date.advance(:hours => 19).to_i
+        starts = date.advance(hours: 7).to_i
+        ends = date.advance(hours: 19).to_i
 
         hours = (starts..ends).step(1.hour).map do |time|
-          OpenStruct.new(date: Time.at(time), available: true, booking_id: nil)
+          OpenStruct.new(
+            date:       Time.at(time),
+            available:  true,
+            booking_id: nil,
+            duration:   nil
+          )
         end
 
         bookings_on_day = @place.bookings.on_day(date)
 
         @bookings = hours.map do |time|
           booking = bookings_on_day.detect {|b| b.date ==  time.date}
+          duration = booking.booked_services.sum(:service_duration)
 
           unless booking.nil?
             time.available = false
             time.booking_id = booking.id
+            time.duration = duration
           end
 
           time

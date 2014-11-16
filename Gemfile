@@ -27,6 +27,7 @@ gem 'carrierwave-postgresql'
 gem 'postgresql_lo_streamer'
 gem 'mini_magick'
 gem 'bullet'
+gem 'time_date_helpers', '~> 0.0.2'
 
 group :development do
   gem 'meta_request'
