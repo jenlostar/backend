@@ -7,7 +7,12 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :places, only: [:index, :show]
+      resources :places, only: [:index, :show] do
+        member do
+          get 'bookings/:on_day' => 'places#bookings', as: :bookings
+        end
+      end
+
       resources :bookings, only: [:create, :index]
       resources :ratings, only: [:create]
 

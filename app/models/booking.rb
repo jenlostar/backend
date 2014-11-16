@@ -42,6 +42,11 @@ class Booking < ActiveRecord::Base
     where.not(confirmed_at: nil).order(:date)
   end)
 
+  # método para obtener las reservas de un día en especifico
+  scope :on_day, (lambda do |day|
+    where(date: day.beginning_of_day..day.end_of_day)
+  end)
+
   # validaciones
   validates :booked_services, presence: true
   validates :place, presence: true
