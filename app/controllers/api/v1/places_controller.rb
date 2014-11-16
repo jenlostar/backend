@@ -1,7 +1,7 @@
 module API
   module V1
 
-    BookingStruct = Struct.new(:date, :available, :booking_id, :duration)
+    BookingStruct = Struct.new(:date, :available, :booking_id, :duration, :ok)
 
     ##
     # Esta clase representa un punto de montaje en el api para
@@ -41,6 +41,8 @@ module API
         end
 
         @bookings.each_with_index do |time, index|
+          next unless @bookings[index].ok.nil?
+
           booking = bookings_on_day.detect {|b| b.date ==  time.date}
           services = booking.booked_services rescue nil
           duration = DateTime.parse(services.sum(:service_duration)) if services
@@ -48,8 +50,9 @@ module API
           unless booking.nil?
             mark_booking_unavailable(booking, duration, index)
             if duration.hour > 0 && duration.min > 0
-              mark_booking_unavailable(booking, duration, index+1)
-              next
+              (1..duration.hour).each do |h|
+                mark_booking_unavailable(booking, duration, index+h)
+              end
             end
           end
         end
@@ -71,6 +74,7 @@ module API
         @bookings[index].available = false
         @bookings[index].booking_id = booking.id
         @bookings[index].duration = duration
+        @bookings[index].ok = true
       end
     end
   end
