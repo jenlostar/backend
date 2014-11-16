@@ -16,6 +16,8 @@ Bundler.require(*Rails.groups)
 module Backend
   class Application < Rails::Application
     config.i18n.default_locale = :es
+    config.time_zone = 'Bogota'
+
     config.generators do |g|
       g.test_framework :minitest, spec: false, fixture: false
       g.helper false
