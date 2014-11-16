@@ -1,5 +1,8 @@
 module API
   module V1
+
+    BookingStruct = Struct.new(:date, :available, :booking_id, :duration)
+
     ##
     # Esta clase representa un punto de montaje en el api para
     # enviar los lugares disponibles
@@ -30,28 +33,25 @@ module API
         starts = date.advance(hours: 7).to_i
         ends = date.advance(hours: 19).to_i
 
-        hours = (starts..ends).step(1.hour).map do |time|
-          OpenStruct.new(
-            date:       Time.at(time),
-            available:  true,
-            booking_id: nil,
-            duration:   nil
-          )
-        end
-
         bookings_on_day = @place.bookings.on_day(date)
 
-        @bookings = hours.map do |time|
+
+        @bookings = (starts..ends).step(1.hour).to_a.map do |time|
+          BookingStruct.new(Time.at(time), true)
+        end
+
+        @bookings.each_with_index do |time, index|
           booking = bookings_on_day.detect {|b| b.date ==  time.date}
-          duration = booking.booked_services.sum(:service_duration)
+          services = booking.booked_services rescue nil
+          duration = DateTime.parse(services.sum(:service_duration)) if services
 
           unless booking.nil?
-            time.available = false
-            time.booking_id = booking.id
-            time.duration = duration
+            mark_booking_unavailable(booking, duration, index)
+            if duration.hour > 0 && duration.min > 0
+              mark_booking_unavailable(booking, duration, index+1)
+              next
+            end
           end
-
-          time
         end
       end
 
@@ -63,6 +63,14 @@ module API
 
       def place_params
         params.permit(:on_day)
+      end
+
+      def mark_booking_unavailable(booking, duration, index)
+        return if index > @bookings.length
+
+        @bookings[index].available = false
+        @bookings[index].booking_id = booking.id
+        @bookings[index].duration = duration
       end
     end
   end
