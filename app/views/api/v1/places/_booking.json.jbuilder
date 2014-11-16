@@ -7,3 +7,5 @@ json.hour_with_meridian l(booking.date, format: '%I:%M %p')
 json.date_extended      l(booking.date, format: '%A %d %b %I:%M %p')
 
 json.available          booking.available
+
+json.duration           booking.booked_services.sum(:service_duration)

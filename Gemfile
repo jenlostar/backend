@@ -26,11 +26,11 @@ gem 'carrierwave'
 gem 'carrierwave-postgresql'
 gem 'postgresql_lo_streamer'
 gem 'mini_magick'
+gem 'bullet'
 
 group :development do
   gem 'meta_request'
   gem 'quiet_assets'
-  gem 'bullet'
   gem 'railroady'
   gem 'better_errors'
   gem 'binding_of_caller'
