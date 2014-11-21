@@ -35,19 +35,18 @@ module API
 
         bookings_on_day = @place.bookings.on_day(date)
 
-
         @bookings = (starts..ends).step(1.hour).to_a.map do |time|
           BookingStruct.new(Time.at(time), true)
         end
 
         @bookings.each_with_index do |time, index|
-          next unless @bookings[index].ok.nil?
+          next if !@bookings[index].ok.nil?
 
           booking = bookings_on_day.detect {|b| b.date ==  time.date}
           services = booking.booked_services rescue nil
           duration = DateTime.parse(services.sum(:service_duration)) if services
 
-          unless booking.nil?
+          if !booking.nil?
             mark_booking_unavailable(booking, duration, index)
             if duration.hour > 0 && duration.min > 0
               (1..duration.hour).each do |h|

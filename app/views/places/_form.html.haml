@@ -1,34 +1,42 @@
 =simple_form_for @place do |f|
-  .list-group-item
-    =f.label :name, t('simple_form.labels.place.name')
-    .list-group-item-heading=f.input_field :name, class: 'form-control'
-  .list-group-item
-    =f.label :address, t('simple_form.labels.place.address')
-    .list-group-item-heading=f.input_field :address, class: 'form-control'
-  .list-group-item
-    =f.label :description, t('simple_form.labels.place.description')
-    .list-group-item-heading=f.input_field :description, class: 'form-control'
-  .list-group-item
-    =f.label :mobile_phone, t('simple_form.labels.place.mobile_phone')
-    .list-group-item-heading=f.input_field :mobile_phone, class: 'form-control'
-  .list-group-item
-    =f.label :land_line, t('simple_form.labels.place.land_line')
-    .list-group-item-heading=f.input_field :land_line, class: 'form-control'
-  .list-group-item
-    =f.label :photo1, t('simple_form.labels.place.photo1')
-    .list-group-item-heading=f.input_field :photo1, as: :file, class: 'form-control'
-    =link_to lo_image_url(@place.photo1), target: '_new' do
-      =image_tag lo_image_url(@place.photo1), style: "width: 210px;height: 170px"
-  .list-group-item
-    =f.label :photo2, t('simple_form.labels.place.photo2')
-    .list-group-item-heading=f.input_field :photo2, as: :file, class: 'form-control'
-    =link_to lo_image_url(@place.photo2), target: '_new' do
-      =image_tag lo_image_url(@place.photo2), style: "width: 210px;height: 170px"
-  .list-group-item
-    =f.label :photo3, t('simple_form.labels.place.photo3')
-    .list-group-item-heading=f.input_field :photo3, as: :file, class: 'form-control'
-    =link_to lo_image_url(@place.photo3), target: '_new' do
-      =image_tag lo_image_url(@place.photo3), style: "width: 210px;height: 170px"
+  %table.table
+    %tr
+      %td
+        =f.label :name, t('simple_form.labels.place.name')
+        .list-group-item-heading=f.input_field :name, class: 'form-control'
+      %td
+        =f.label :address, t('simple_form.labels.place.address')
+        .list-group-item-heading=f.input_field :address, class: 'form-control'
+    %tr
+      %td
+        =f.label :land_line, t('simple_form.labels.place.land_line')
+        .list-group-item-heading=f.input_field :land_line, class: 'form-control'
+      %td
+        =f.label :mobile_phone, t('simple_form.labels.place.mobile_phone')
+        .list-group-item-heading=f.input_field :mobile_phone, class: 'form-control'
+    %tr
+      %td(colspan=2)
+        =f.label :description, t('simple_form.labels.place.description')
+        .list-group-item-heading=f.input_field :description, class: 'form-control', as: :text
+  .row
+    .col-sm-4
+      .list-group-item
+        =f.label :photo1, t('simple_form.labels.place.photo1')
+        .list-group-item-heading=f.input_field :photo1, as: :file, class: 'form-control'
+        =link_to lo_image_url(@place.photo1), target: '_new' do
+          =image_tag lo_image_url(@place.photo1), style: 'width: 100%', class: 'thumbnail'
+    .col-sm-4
+      .list-group-item
+        =f.label :photo2, t('simple_form.labels.place.photo2')
+        .list-group-item-heading=f.input_field :photo2, as: :file, class: 'form-control'
+        =link_to lo_image_url(@place.photo2), target: '_new' do
+          =image_tag lo_image_url(@place.photo2), style: 'width: 100%', class: 'thumbnail'
+    .col-sm-4
+      .list-group-item
+        =f.label :photo3, t('simple_form.labels.place.photo3')
+        .list-group-item-heading=f.input_field :photo3, as: :file, class: 'form-control'
+        =link_to lo_image_url(@place.photo3), target: '_new' do
+          =image_tag lo_image_url(@place.photo3), style: 'width: 100%', class: 'thumbnail'
   .list-group-item
     .list-group-item-heading
       =f.button :submit, 'Enviar', class: 'btn-primary'
