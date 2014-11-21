@@ -2,6 +2,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: peluquerias_development
+  template: template0
   pool: 5
   username: jenny
   password:
@@ -10,6 +11,7 @@ test:
   adapter: postgresql
   encoding: unicode
   database: peluquerias_test
+  template: template0
   pool: 5
   username: jenny
   password:

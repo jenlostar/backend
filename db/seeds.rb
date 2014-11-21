@@ -15,9 +15,9 @@ Admin.create(
   password_confirmation: '12345678#'
 )
 
-20.times do
-  place = FactoryGirl.create(:place)
-  5.times do
+3.times do
+  place = FactoryGirl.create(:place_with_schedules_and_services)
+  3.times do
     FactoryGirl.create(:booking, place: place)
   end
 end
