@@ -14,7 +14,9 @@ Rails.application.routes.draw do
       end
 
       resources :bookings, only: [:create, :index]
-      resources :ratings, only: [:create]
+      resources :ratings, only: [:create] do
+        get 'current/:place_id/:user_id', :on => :collection, :action => 'show'
+      end
 
       post 'login' => 'users#login', as: 'login'
       post 'logout' => 'users#logout', as: 'logout'
