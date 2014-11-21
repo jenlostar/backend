@@ -40,7 +40,7 @@ class Place < ActiveRecord::Base
   # Cantidad reulstados por página
   paginates_per 10
 
-  default_scope -> { order('name ASC') }
+  default_scope -> { order('places.name ASC') }
 
   # Obtiene la lista de lugares que tienen asociados servicios y horarios
   scope :completed, (lambda do
