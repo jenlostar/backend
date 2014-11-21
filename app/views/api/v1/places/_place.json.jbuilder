@@ -5,7 +5,7 @@ json.description place.description
 json.mobile_phone place.mobile_phone
 json.land_line place.land_line
 
-json.photos [place.photo1, place.photo2, place.photo3].map { |photo| lo_image_url(photo) }
+json.photos [place.photo1, place.photo2, place.photo3].map { |photo| lo_image_url(photo, place.updated_at.to_i) }
 
 json.rating_avg place.rating_average
 json.rating_count place.ratings.count

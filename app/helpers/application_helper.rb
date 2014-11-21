@@ -57,9 +57,9 @@ module ApplicationHelper
     )
   end
 
-  def lo_image_url(attribute)
+  def lo_image_url(attribute, timestamp = nil)
     if !attribute.nil? && !attribute.file.nil? && attribute.file.size > 0
-      "#{Rails.application.secrets.host_url}/lo/#{attribute.identifier}.jpg"
+      "#{Rails.application.secrets.host_url}/lo/#{attribute.identifier}.jpg?ts=#{timestamp}"
     end
   end
 end
