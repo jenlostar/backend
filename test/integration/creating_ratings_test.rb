@@ -31,7 +31,7 @@ class CreatingRatings < ActionDispatch::IntegrationTest
     @post_data = nil
   end
 
-  def test_create_a_booking
+  def test_create_a_rating
     post api_v1_ratings_path, @post_data, authorization: @bearer, client_id: @app.uid
 
     assert_equal 200, response.status
@@ -42,6 +42,6 @@ class CreatingRatings < ActionDispatch::IntegrationTest
     assert_equal @place.id,          json[:place_id]
     assert_equal @user.id,           json[:user_id]
     assert_equal @post_data[:value], json[:value]
-    assert_equal @post_data[:value], json[:place_rating_avg]
+    assert_equal @place.id,          json[:place][:id]
   end
 end
