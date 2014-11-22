@@ -26,7 +26,7 @@ module API
       end
 
       def show
-        render json: @rating.to_json, status: 200
+        render json: @rating.to_json(include: :place), status: 200
       end
 
       private
