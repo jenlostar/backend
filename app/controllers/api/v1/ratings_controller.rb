@@ -19,7 +19,7 @@ module API
 
           response = @rating.attributes.merge(place_rating_avg: avg_value)
 
-          render json: response.to_json, status: 200
+          render json: response.to_json(include: :place), status: 200
         else
           render json: { errors: @rating.errors }, status: 404
         end
