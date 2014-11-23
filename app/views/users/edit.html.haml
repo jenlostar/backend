@@ -1,0 +1,47 @@
+.row
+  #list.col-sm-12{"data-title" => t(:user)}
+    .panel.panel-default
+      .panel-heading.clearfix
+        %h2.panel-title.pull-left
+          =t(:user)
+        .btn-group.pull-right
+          %a.btn.btn-info{href: users_path}
+            %i.fa.fa-arrow-left
+            %span=t(:back)
+      .list-group
+        =simple_form_for @user do |f|
+          %table.table
+            %tr
+              %td
+                =f.label :first_name, t('simple_form.labels.user.first_name')
+                .list-group-item-heading=f.input_field :first_name, class: 'form-control'
+              %td
+                =f.label :last_name, t('simple_form.labels.user.last_name')
+                .list-group-item-heading=f.input_field :last_name, class: 'form-control'
+            %tr
+              %td
+                =f.label :email, t('simple_form.labels.user.email')
+                .list-group-item-heading=f.input_field :email, class: 'form-control'
+              %td
+                =f.label :phone_number, t('simple_form.labels.user.phone_number')
+                .list-group-item-heading=f.input_field :phone_number, class: 'form-control'
+            %tr
+              %td(colspan=2)
+                =f.label :gender, t('simple_form.labels.user.gender')
+                .list-group-item-heading
+                  =f.input_field :gender,
+                                 collection: [['M', 'Masculino'], ['F', 'Femenino'], ['N', 'N/A'], ],
+                                 label_method: :last,
+                                 value_method: :first,
+                                 item_wrapper_class: 'radio-inline',
+                                 as: :radio_buttons
+            %tr
+              %td
+                =f.label :password, t('simple_form.labels.user.password')
+                .list-group-item-heading=f.input_field :password, class: 'form-control'
+              %td
+                =f.label :password_confirmation, t('simple_form.labels.user.password_confirmation')
+                .list-group-item-heading=f.input_field :password_confirmation, class: 'form-control'
+          .list-group-item
+            .list-group-item-heading
+              =f.button :submit, 'Guardar', class: 'btn-primary'

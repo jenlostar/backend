@@ -10,34 +10,8 @@
     =javascript_include_tag 'application'
     =csrf_meta_tags
   %body
-    .navbar.navbar-default.navbar-fixed-top(role="navigation")
-      .container
-        = link_to places_path, class: 'btn btn-primary btn-lg' do
-          %i.fa.fa-building-o
-          =t(:places)
-        = link_to bookings_path, class: 'btn btn-primary btn-lg' do
-          %i.fa.fa-calendar
-          =t(:bookings)
-          %span.badge.badge-success
-            =pending_confirm_count
-        = link_to destroy_admin_session_path, method: :delete, class: 'btn btn-primary btn-lg' do
-          %i.fa.fa-user
-          =t(:sign_out)
+    = render partial: 'layouts/header' if signed_in?
     .container
       - flash.each do |name, msg|
         .alert{:class => "alert-#{alert_css_class(name)}", :role => 'alert'}=msg
       =yield
-    :javascript
-      /*
-       * Initialize Bootcards.
-       *
-       * Parameters:
-       * - offCanvasHideOnMainClick (boolean): hide the offcanvas menu on clicking outside the off canvas
-       * - enableTabletPortraitMode (boolean): enable single pane mode for tablets in portraitmode
-       * - disableRubberBanding (boolean): disable the iOS rubber banding effect
-       */
-      bootcards.init( {
-        offCanvasHideOnMainClick : true,
-        enableTabletPortraitMode : true,
-        disableRubberBanding : true
-      });

@@ -1,0 +1,32 @@
+.row
+  #list.col-sm-12{"data-title" => t(:users)}
+    .panel.panel-default
+      .panel-heading.clearfix
+        %h2.panel-title.pull-left
+          =t(:users)
+      %table.table.table-striped.table-hover
+        %tr
+          %th Nombres
+          %th Apellidos
+          %th E-Mail
+          %th Telefono
+          %th Género
+          %th
+        - @users.try(:each) do |user|
+          %tr
+            %td=user.first_name
+            %td=user.last_name
+            %td=user.email
+            %td=user.phone_number
+            %td=user.gender
+            %td
+              .btn-group
+                =link_to edit_user_path(user), class: 'btn btn-large btn-success' do
+                  %i.fa.fa-edit
+                =link_to  user_path(user),
+                          class: 'btn btn-large btn-danger',
+                          data: { confirm: 'Realmente desea borrar el usuario?' },
+                          method: :delete do
+                  %i.fa.fa-trash
+
+    =paginate @users

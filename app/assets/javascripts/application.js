@@ -15,5 +15,4 @@
 //= require bootstrap-sprockets
 //= require chosen-jquery
 //= require scaffold
-//= require bootcards
 //= require_tree .

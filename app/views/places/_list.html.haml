@@ -1,22 +1,17 @@
 .panel.panel-default
   .panel-body
-    .search-form
-      .row
-        .col-xs-6
-          .form-group
-            %input.form-control{:placeholder => t(:search_place), :type => "text"}
-            %i.fa.fa-search.placeholder
-        .col-xs-3
-          %a.btn.btn-info.btn-block{:href => new_place_path}
-            %i.fa.fa-search
-            %span=t(:search)
-        .col-xs-3
-          %a.btn.btn-primary.btn-block{:href => new_place_path}
-            %i.fa.fa-plus
-            %span=t(:add)
+    %form.form-inline(role="form")
+      .form-group
+        %input.form-control{placeholder: t(:search_place), type: "text"}
+        %a.btn.btn-info{href: new_place_path}
+          %i.fa.fa-search
+          %span=t(:search)
+        %a.btn.btn-primary{href: new_place_path}
+          %i.fa.fa-plus
+          %span=t(:add)
   .list-group
     - @places.each do |place|
-      %a.list-group-item{:href => edit_place_path(place), class: selected_index_item_class(place)}
+      %a.list-group-item{href: edit_place_path(place), class: selected_index_item_class(place)}
         %i.fa.fa-3x.fa-building-o.pull-left
         %h5.list-group-item-heading
           ="#{place.name}, #{place.address}"

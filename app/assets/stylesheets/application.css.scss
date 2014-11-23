@@ -1,5 +1,20 @@
 @import "bootstrap-sprockets";
+@import "bootswatch/cosmo/variables";
 @import "bootstrap";
-@import "bootcards-desktop";
+
+body { padding-top: 65px; }
+
+.radio-inline, .checkbox-inline {
+  display: inline-block;
+  padding-left: 20px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  vertical-align: middle;
+  font-weight: normal;
+  cursor: pointer;
+  margin-top: 0px;
+}
+
+@import "bootswatch/cosmo/bootswatch";
 @import "font-awesome";
 @import "chosen";

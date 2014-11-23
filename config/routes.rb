@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   devise_for :admins
 
+  resources :users
+
   resources :places, concerns: :paginatable do
     with_options except: [:index, :show] do |list_except|
       list_except.resources :schedules

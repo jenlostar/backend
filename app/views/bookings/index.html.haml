@@ -1,6 +1,6 @@
-.panel.panel-default.bootcards-richtext
+.panel.panel-default
   .panel-heading.clearfix
-    %h3.panel-title.pull-left
+    %h2.panel-title.pull-left
       =t(:bookings)
     .pull-right
       .btn-group
@@ -21,24 +21,39 @@
       %th
     - @bookings.try(:each) do |booking|
       %tr
-        %td(style='word-wrap: break-word')=booking.place.name
-        %td(style='white-space: nowrap')=booking.date.strftime('%Y-%m-%d %I:%M %P')
-        %td(style='word-wrap: break-word')=booking_user_full_name(booking.user)
+        %td(style='word-wrap: break-word')
+          %span
+            %i.fa.fa-building-o
+            =booking.place.name
+        %td(style='white-space: nowrap')
+          %span
+            %i.fa.fa-calendar
+            =booking.date.strftime('%Y-%m-%d %I:%M %P')
+        %td(style='word-wrap: break-word')
+          %span
+            %i.fa.fa-user
+            =booking_user_full_name(booking.user)
+          %br
+          %span
+            %i.fa.fa-phone
+            =booking.user.phone_number
         %td(style='word-wrap: break-word')
           %ul
             - booking.booked_services.each do |service|
               %li
                 %b=service.service_name
                 %br
-                =service_time_in_words(service.service_duration)
-        %td(style='white-space: nowrap')=booked_services_duration(booking.booked_services)
-        %td(style='min-width: 219px')
+                %span
+                  %i.fa.fa-clock-o
+                  =service_time_in_words(service.service_duration)
+        %td(style='white-space: nowrap')
+          %span
+            %i.fa.fa-clock-o
+            =booked_services_duration(booking.booked_services)
+        %td(style='min-width: 120px')
           .btn-group
             - if booking.confirmed_at.nil? && booking.canceled_at.nil?
               =link_to approve_booking_path(booking), class: 'btn btn-large btn-success', method: :post do
                 %i.fa.fa-check
-                Confirmar
-
               =link_to  discard_booking_path(booking), class: 'btn btn-large btn-danger', method: :post do
                 %i.fa.fa-trash
-                Anular

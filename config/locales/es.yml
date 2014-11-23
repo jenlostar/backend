@@ -7,6 +7,8 @@ es:
   delete_place_confirm: Borrar lugar?
   search: Buscar
   new: Nuevo
+  user: Usuario
+  users: Usuarios
   places: Lugares
   bookings: Reservas
   contact: Contacto
@@ -17,6 +19,7 @@ es:
   add: Adicionar
   edit: Editar
   services: Servicios
+  user_updated: Usuario actualizado
   place_created: El nuevo lugar ha sido creado
   place_updated: El lugar ha sido actualizado
   schedule_created: El nuevo horario ha sido creado
@@ -53,6 +56,14 @@ es:
   send: Enviar
   simple_form:
     labels:
+      user:
+        email: Email
+        first_name: Nombres
+        last_name: Apellidos
+        phone_number: Teléfono
+        password: Contraseña
+        password_confirmation: Confirme contraseña
+        gender: Género
       place:
         name: Nombre
         address: Dirección

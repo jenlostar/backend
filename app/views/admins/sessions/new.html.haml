@@ -1,16 +1,18 @@
-.panel.panel-default.bootcards-richtext
-  .panel-heading.clearfix
-    %h3.panel-title.pull-left
-      =t(:sign_in)
-  .list-group
-    =simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {autocomplete: 'off'}) do |f|
-      .list-group-item
-        =f.label :name, t('simple_form.labels.admins.email')
-        .list-group-item-heading=f.input_field :email, required: true, autofocus: true, class: 'form-control', autocomplete: 'off'
-      .list-group-item
-        =f.label :name, t('simple_form.labels.admins.password')
-        .list-group-item-heading=f.input_field :password, required: true, class: 'form-control', autocomplete: 'off'
-      .list-group-item
-        .list-group-item-heading
-          =f.button :submit, t(:sign_in), class: 'btn-primary'
-          = render "admins/shared/links"
+.row
+  .col-md-5.col-md-offset-3
+    .panel.panel-default
+      .panel-heading.clearfix
+        %h3.panel-title.pull-left
+          =t(:sign_in)
+      .list-group
+        =simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {autocomplete: 'off'}) do |f|
+          .list-group-item
+            =f.label :name, t('simple_form.labels.admins.email')
+            .list-group-item-heading=f.input_field :email, required: true, autofocus: true, class: 'form-control', autocomplete: 'off'
+          .list-group-item
+            =f.label :name, t('simple_form.labels.admins.password')
+            .list-group-item-heading=f.input_field :password, required: true, class: 'form-control', autocomplete: 'off'
+          .list-group-item
+            .list-group-item-heading
+              =f.button :submit, t(:sign_in), class: 'btn-primary'
+              = render "admins/shared/links"

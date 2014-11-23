@@ -5,7 +5,7 @@ class PlacesController < ApplicationController
   before_action :set_place, only: [:edit, :destroy]
 
   def index
-    @places = Place.page params[:page]
+    @places = Place.page(params[:page])
   end
 
   def new
