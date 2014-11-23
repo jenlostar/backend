@@ -13,10 +13,7 @@ module API
 
         if @rating.save
           avg_value = Rating.for_place(rating_params[:place_id]).first[1].to_f
-
-          place = Place.find(rating_params[:place_id])
-          place.update_attribute(:rating_average, avg_value)
-
+          @rating.place.update_attribute(:rating_average, avg_value)
           render json: @rating.to_json(include: :place), status: 200
         else
           render json: { errors: @rating.errors }, status: 404
