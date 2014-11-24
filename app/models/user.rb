@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :trackable, :validatable
 
   has_many :bookings
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
