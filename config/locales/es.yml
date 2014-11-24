@@ -53,7 +53,7 @@ es:
   sign_in: Entrar
   sign_out: Salir
   forgot_your_password: Olvidó su contraseña?
-  forgot_your_password_instructions: Enviar las instrucciones para restablecer la contraseña
+  forgot_your_password_instructions: Enviar instrucciones
   change_your_password: Cambiar contraseña
   send: Enviar
   simple_form:
