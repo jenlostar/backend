@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:edit, :update, :destroy]
+
   def index
     @users = User.page(params[:page])
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     user_params_update = user_params
 
     if user_params_update[:password].blank?
@@ -24,7 +24,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+  end
+
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(
