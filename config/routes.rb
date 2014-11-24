@@ -25,26 +25,29 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :admins
+  devise_for :users, controllers: { sessions: "sessions" }
 
-  resources :users
+  scope '/admin' do
+    devise_for :admins
 
-  resources :places, concerns: :paginatable do
-    with_options except: [:index, :show] do |list_except|
-      list_except.resources :schedules
-      list_except.resources :services
-    end
-  end
-
-  resources :bookings, only: [:index] do
-    member do
-      post 'approve'
-      post 'discard'
+    resources :users
+    resources :places, concerns: :paginatable do
+      with_options except: [:index, :show] do |list_except|
+        list_except.resources :schedules
+        list_except.resources :services
+      end
     end
 
-    collection do
-      get 'canceled' => 'bookings#canceled', as: :canceled
-      get 'approved' => 'bookings#approved', as: :approved
+    resources :bookings, only: [:index] do
+      member do
+        post 'approve'
+        post 'discard'
+      end
+
+      collection do
+        get 'canceled' => 'bookings#canceled', as: :canceled
+        get 'approved' => 'bookings#approved', as: :approved
+      end
     end
   end
 

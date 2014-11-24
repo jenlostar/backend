@@ -10,7 +10,7 @@
     =javascript_include_tag 'application'
     =csrf_meta_tags
   %body
-    = render partial: 'layouts/header' if signed_in?
+    = render partial: 'layouts/header' if admin_signed_in?
     .container
       - flash.each do |name, msg|
         .alert{:class => "alert-#{alert_css_class(name)}", :role => 'alert'}=msg

@@ -1,0 +1,21 @@
+.row
+  .col-md-5.col-md-offset-3
+    .panel.panel-default
+      .panel-heading.clearfix
+        %h3.panel-title.pull-left
+          =t(:change_your_password)
+      .list-group
+        =simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+          = f.error_notification
+          = f.input :reset_password_token, as: :hidden
+          = f.full_error :reset_password_token
+          .list-group-item
+            =f.label :password, t('simple_form.labels.user.password')
+            .list-group-item-heading=f.input_field :password, class: 'form-control', required: true
+          .list-group-item
+            =f.label :password_confirmation, t('simple_form.labels.user.password_confirmation')
+            .list-group-item-heading=f.input_field :password_confirmation, class: 'form-control', required: true
+          .list-group-item
+            .list-group-item-heading
+              =f.button :submit, t(:change_your_password), class: 'btn-primary'
+= render "devise/shared/links"
