@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, controllers: { sessions: "sessions" }
+  devise_for :users, controllers: { sessions: 'sessions', passwords: 'passwords' }
 
   scope '/admin' do
     devise_for :admins
@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     end
   end
 
-  mount PostgresqlLoStreamer::Engine => "/lo"
+  mount PostgresqlLoStreamer::Engine => '/lo'
 
   root 'places#index'
 end
