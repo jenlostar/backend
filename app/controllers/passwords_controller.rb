@@ -4,7 +4,7 @@ class PasswordsController < Devise::PasswordsController
     yield resource if block_given?
 
     if resource.errors.empty?
-      render 'shared/password_updated'
+      render 'devise/shared/password_updated'
     else
       respond_with resource
     end
